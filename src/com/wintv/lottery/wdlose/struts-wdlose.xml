@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 开奖公告-->		
+	 <package name="wdlose" namespace="/wdlose" extends="lottery-default">
+		 <action name="wdloseResults"
+			class="com.wintv.lottery.wdlose.action.WdloseResultsAction"
+			method="display">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="ajaxLoadOption9"
+			class="com.wintv.lottery.wdlose.action.WdloseResultsAction"
+			method="loadOption9">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="ajaxLoadGoal4"
+			class="com.wintv.lottery.wdlose.action.WdloseResultsAction"
+			method="loadGoal4">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="ajaxLoadHalfComplete6"
+			class="com.wintv.lottery.wdlose.action.WdloseResultsAction"
+			method="loadHalfComplete6">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+    </package>
+</struts>

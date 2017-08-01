@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="lottery.admin.b2c" namespace="/admin/b2c"
+		extends="lottery-default">
+		<action name="listExpertsPage"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"  method="listExpertsPage">
+			<result name="success">
+				/WEB-INF/pages/admin/b2c/experts_list.jsp
+			</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="findB2CAgainstPage"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"  method="findB2CAgainstList">
+			<result name="success">
+				/WEB-INF/pages/admin/b2c/b2c_against_list.jsp
+			</result>
+		</action>
+		<action name="b2cPub"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"  method="b2cPubMethod">
+			<result name="b2c.pub">
+				/WEB-INF/pages/admin/b2c/b2c_pub.jsp
+			</result>
+		</action>
+		
+		
+		
+		<action name="orderManagePage"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"  method="orderManageMethod">
+			<result name="success">
+				/WEB-INF/pages/admin/b2c/order_manage.jsp
+			</result>
+		</action>
+		<action name="addExpertHome"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"  method="addExpertHome">
+			<result name="add.expert.home">
+				/WEB-INF/pages/admin/b2c/add_expert.jsp
+			</result>
+		</action>
+		
+		<action name="upload" class="com.wintv.lottery.admin.b2c.action.UploadAction"> 
+            <!-- Struts2内置的文件上传拦截器 --> 
+            <interceptor-ref name="fileUpload"> 
+                <param name="allowedTypes">image/bmp,image/x-png,image/gif,image/pjpeg</param> 
+                <param name="maximumSize">2048000</param> 
+            </interceptor-ref> 
+            <interceptor-ref name="defaultStack" /> 
+            <param name="savePath">C://expert//</param> 
+            
+        </action> 
+		
+		
+	</package>
+	
+	
+	
+</struts>

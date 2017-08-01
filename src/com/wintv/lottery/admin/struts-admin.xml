@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 后台管理主界面 -->
+	<package name="lottery.admin" namespace="/admin"
+		extends="lottery-default">
+		<action name="index"
+			class="com.wintv.lottery.admin.user.action.AdminAction"
+			method="index">
+			<result name="success">
+				/WEB-INF/pages/admin/index.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="top"
+			class="com.wintv.lottery.admin.user.action.AdminAction"
+			method="top">
+			<result name="success">
+				/WEB-INF/pages/admin/admin_top.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="left"
+			class="com.wintv.lottery.admin.user.action.AdminAction"
+			method="left">
+			<result name="success">
+				/WEB-INF/pages/admin/admin_left.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.admin.user.action.AdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+	<!-- 后台用户管理 -->
+	<package name="lottery.admin.user" namespace="/admin/user"
+		extends="lottery-default">
+		<action name="index"
+			class="com.wintv.lottery.admin.user.action.UserAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/user/admin_user_list.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="detail"
+			class="com.wintv.lottery.admin.user.action.UserAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/user/admin_user_detail.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="download"
+			class="com.wintv.lottery.admin.user.action.UserExportAdminAction">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<param name="bufferSize">4096</param>
+			</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.admin.user.action.UserAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+	<!-- 后台账户管理 -->
+	<package name="lottery.admin.pay" namespace="/admin/pay"
+		extends="lottery-default">
+		<!-- 后台充值管理 -->
+		<action name="charge"
+			class="com.wintv.lottery.admin.pay.action.ChargeLogAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/charge/charge_list.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="chargeDetail"
+			class="com.wintv.lottery.admin.pay.action.ChargeLogAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/charge/charge_detail.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="addCharge"
+			class="com.wintv.lottery.admin.pay.action.ChargeLogAdminAction" method="excute"> 
+			<result name="success">
+				/WEB-INF/pages/admin/pay/charge/charge_add.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*ChargeJson"
+			class="com.wintv.lottery.admin.pay.action.ChargeLogAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 后台取款管理 -->
+		<action name="draw"
+			class="com.wintv.lottery.admin.pay.action.WithdrawLogAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/withdraw/withdraw_list.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="drawDetail"
+			class="com.wintv.lottery.admin.pay.action.WithdrawLogAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/withdraw/withdraw_detail.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*DrawJson"
+			class="com.wintv.lottery.admin.pay.action.WithdrawLogAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 后台彩金管理 -->
+		<action name="caiJin"
+			class="com.wintv.lottery.admin.pay.action.CaiJinDonateAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/caijin/caijin_list.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="caiJinDetail"
+			class="com.wintv.lottery.admin.pay.action.CaiJinDonateAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/caijin/caijin_detail.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="addCaijin"
+			class="com.wintv.lottery.admin.pay.action.CaiJinDonateAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/caijin/caijin_add.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*CaijinJson"
+			class="com.wintv.lottery.admin.pay.action.CaiJinDonateAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 后台客服管理 -->
+		<action name="*CsJson"
+			class="com.wintv.lottery.admin.pay.action.CSHandleLogAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 后台银行管理 -->
+		<action name="bank"
+			class="com.wintv.lottery.admin.pay.action.BankAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/pay/bank/bank_list.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*BankJson"
+			class="com.wintv.lottery.admin.pay.action.BankAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+	<!-- 后台心水管理 -->
+	<package name="lottery.admin.xinshui" namespace="/admin/xinshui"
+		extends="lottery-default">
+		<!-- 后台心水赛事 -->
+		<action name="xinshuiRaceChoice"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAgainstAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_race_choice.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="xinshuiRace"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAgainstAdminAction">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_race.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*AgainstJson"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAgainstAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 后台心水 -->
+			<action name="xinshuiDeployer"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiDeployerAction">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_deployer.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="xinshui"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="xinshuiEdit"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_edit.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="xinshuiOrder"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiOrderAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_order.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*XinshuiJson"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="xinshuiOrderDetail"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiOrderAdminAction" method="excute">
+			<result name="success">
+				/WEB-INF/pages/admin/xinshui/xinshui_order_edit.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*OrderJson"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiOrderAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*DeployerJson"
+			class="com.wintv.lottery.admin.xinshui.action.XinshuiDeployerAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+	<!-- 后台期次管理 -->
+	<package name="lottery.admin.phase" namespace="/admin/phase"
+		extends="lottery-default">
+	
+		<action name="index"
+			class="com.wintv.lottery.admin.phase.action.IndexAction"
+			method="main">
+			<result name="6">
+				/WEB-INF/pages/admin/phase/add_6_phase.jsp
+			</result>
+			<result name="1">
+				/WEB-INF/pages/admin/phase/add_1_phase.jsp
+			</result>
+			<result name="9">
+				/WEB-INF/pages/admin/phase/add_9_phase.jsp
+			</result>
+			<result name="8">
+				/WEB-INF/pages/admin/phase/add_8_phase.jsp
+			</result>
+			<result name="query.against.list">
+				/WEB-INF/pages/admin/phase/query_against.jsp
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="queryDuizhen"
+			class="com.wintv.lottery.admin.phase.action.IndexAction"
+			method="queryAgainst">
+			<result name="success">
+				/WEB-INF/pages/admin/phase/query_against.jsp
+			</result>
+			
+		</action>
+		 <action name="loadJsonData"
+			class="com.wintv.lottery.admin.phase.action.IndexAction"
+			method="geJsonData">
+			
+		</action>
+		<action name="*jh"
+			class="com.wintv.lottery.admin.phase.action.IndexAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		
+		<action name="*Json"
+			class="com.wintv.lottery.admin.phase.action.PhaseManageAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="phasemanage"
+			class="com.wintv.lottery.admin.phase.action.PhaseManageAction"
+			method="index">
+			<result name="success">
+				/WEB-INF/pages/admin/phase/phase_manage.jsp
+			</result>
+			
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="detail"
+			class="com.wintv.lottery.admin.phase.action.PhaseManageAction"
+			method="detail">
+			<result name="success">
+				/WEB-INF/pages/admin/phase/phase_detail.jsp
+			</result>
+			
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="editPhase"
+			class="com.wintv.lottery.admin.phase.action.PhaseManageAction"
+			method="editPhase">
+			<result name="editPhase">
+				/WEB-INF/pages/admin/phase/edit_phase.jsp
+			</result>
+			
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+	<!-- 后台投注管理  2010-03-08 17:08 -->
+	<package name="lottery.admin.bet" namespace="/admin/bet"
+		extends="lottery-default">
+		  <action name="listOrderPage"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="listOrderPage">
+			<result name="success">
+				/WEB-INF/pages/admin/bet/list_bet_orders.jsp
+			</result>
+			<result name="coop.buy.order">
+				/WEB-INF/pages/admin/bet/list_coop_buy_order.jsp
+			</result>
+		 </action>
+		 <action name="getPhaseList"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="getPhaseList">
+			
+		 </action>
+		  <action name="listCoopBuyOrders"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="listCoopBuyOrdersMethod">
+			
+			<result name="coop.buy.order">
+				/WEB-INF/pages/admin/bet/list_coop_buy_order.jsp
+			</result>
+		 </action>
+	     <action name="*Json"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="detail"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="detailOrder">
+			<result name="detail.url">
+				/WEB-INF/pages/admin/bet/detail_order.jsp
+			</result>
+		 </action>
+		 <action name="coopOrderDetail"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="coopBuyDetailMethod">
+			<result name="detail.coop.order.url">
+				/WEB-INF/pages/admin/bet/detail_coop_buy_order.jsp
+			</result>
+		 </action>
+		<!--  3.2.7自动跟单后台管理 -->
+		<action name="listKingSponsorPage"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="listKingSponsorMethod">
+			
+			<result name="king.sponsor.list">
+				/WEB-INF/pages/admin/bet/list_king_sponsor.jsp
+			</result>
+		 </action>
+		 <action name="kingSponsorDetail"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="kingSponsorDetailMethod">
+			
+			<result name="king.sponsor.detail.url">
+				/WEB-INF/pages/admin/bet/detail_king_sponsor.jsp
+			</result>
+		 </action>
+		 <action name="cancelMyAutoOrder"
+			class="com.wintv.lottery.admin.bet.action.BetAdminAction"
+			method="cancelMyAutoOrderMethod">
+			
+		 </action>
+		 
+		 
+		 <action name="listbonusgov"
+			class="com.wintv.lottery.admin.bet.action.KjAdminAction"
+			method="listbonusgov">
+			<result name="success">
+				/WEB-INF/pages/admin/kj/list.jsp
+			</result>
+		 </action>
+		 <action name="*Json"
+			class="com.wintv.lottery.admin.bet.action.KjAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	    <action name="findKJPhaseList"
+			class="com.wintv.lottery.admin.bet.action.KjAdminAction"
+			method="findKJPhaseList">
+			
+		 </action>
+		</package>
+</struts>

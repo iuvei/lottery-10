@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 充值 -->		
+	 <package name="pay.charge" namespace="/pay" extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+        <action name="charge" class="com.wintv.lottery.pay.action.ChargeAction" method="charge">
+			<result name="success">/WEB-INF/pages/pay/charge.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="charge_step2" class="com.wintv.lottery.pay.action.ChargeAction" method="chargeStep2">
+			<result name="success">/WEB-INF/pages/pay/charge_step2.jsp</result>
+			<result name="fail">/pay/charge.html</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="charge_confirm" class="com.wintv.lottery.pay.action.ChargeAction" method="chargeConfirm">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="charge_complete" class="com.wintv.lottery.pay.action.ChargeAction" method="chargeComplete">
+			<result name="success">/pay/charge_success.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*ChargeJson"
+			class="com.wintv.lottery.pay.action.ChargeAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+    </package>
+   
+    <!-- 取款 -->		
+	 <package name="pay.withdraw" namespace="/pay"  extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+        <action name="withdraw" class="com.wintv.lottery.pay.action.WithdrawAction" method="withdraw">
+			<result name="success">/WEB-INF/pages/pay/withdraw.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="withdraw_step2" class="com.wintv.lottery.pay.action.WithdrawAction" method="withdrawStep2">
+			<result name="success">/WEB-INF/pages/pay/withdraw_step2.jsp</result>
+			<result name="fail">/WEB-INF/pages/pay/withdraw.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="withdraw_confirm" class="com.wintv.lottery.pay.action.WithdrawAction" method="withdrawConfirm">
+			<result name="success" type="redirect">/pay/withdraw_list.html</result>
+			<result name="fail">/WEB-INF/pages/pay/withdraw_step2.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="withdraw_list" class="com.wintv.lottery.pay.action.WithdrawAction">
+			<result name="success">/WEB-INF/pages/pay/withdraw_list.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*WithdrawJson"
+			class="com.wintv.lottery.pay.action.WithdrawAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+    </package>
+    
+    <!-- 资金 -->		
+	 <package name="pay.money" namespace="/pay"  extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+        <action name="fund_list" class="com.wintv.lottery.pay.action.FundAction">
+			<result name="success">/WEB-INF/pages/pay/fund_list.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*FundJson"
+			class="com.wintv.lottery.pay.action.FundAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+    </package>
+    
+    <!-- 彩金 -->		
+	 <package name="pay.caijin" namespace="/pay"  extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+        <action name="caijin_list" class="com.wintv.lottery.pay.action.CaijinAction">
+			<result name="success">/WEB-INF/pages/pay/caijin_list.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*CaijinJson"
+			class="com.wintv.lottery.pay.action.CaijinAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+    </package>
+ 	
+</struts>

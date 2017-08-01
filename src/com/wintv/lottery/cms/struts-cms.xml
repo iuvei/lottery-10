@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<package name="lottery.admin.cms" namespace="/admin/cms"
+		extends="lottery-default">
+		<action name="pubHome"
+			class="com.wintv.lottery.admin.cms.CSMAdminAction"  method="pubHome">
+			<result name="success">
+				/WEB-INF/pages/admin/b2c/experts_list.jsp
+			</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.admin.b2c.action.B2CAdminAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		
+	</package>
+	<package name="lottery.cms" namespace="/cms"
+		extends="lottery-default">
+		<!-- CMS-文章列表 -->
+		<action name="list" class="com.wintv.lottery.cms.action.CMSAction">
+			<result name="success">/cms/cms_article_list.jsp</result>
+		</action>
+		<!-- CMS-内容显示 -->
+		<action name="detail" class="com.wintv.lottery.cms.action.CMSAction">
+			<result name="success">/cms/cms_article_detail.jsp</result>
+		</action>
+		<!-- CMS-评论 -->
+		<action name="comment" class="com.wintv.lottery.cms.action.CMSAction">
+			<result name="success">/cms/cms_article_comment.jsp</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.cms.action.CMSAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>

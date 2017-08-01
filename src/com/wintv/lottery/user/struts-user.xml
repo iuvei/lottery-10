@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 用户登录 -->		
+	<package name="user.login" namespace="/user"  extends="lottery-default">
+        <action name="doLogin" class="com.wintv.lottery.user.action.UserAction" method="login">
+        	<result name="success" type="redirect">${loginRedirectUrl}</result>
+            <result name="error" type="redirect">/common/error/500.htm</result>
+            <result name="input">/user/login.html</result>
+        </action>
+        <action name="topLogin" class="com.wintv.lottery.user.action.UserAction" method="login">
+        	<result name="success">/common/top.jsp</result>
+        	<result name="input">/common/top.jsp</result>
+        </action>
+        <action name="logout" class="com.wintv.lottery.user.action.UserAction" method="logout">
+            <result name="success">/user/login.html</result>
+        </action>
+        <action name="login" class="com.wintv.lottery.user.action.UserAction" method="preLogin">
+			<result name="success">/WEB-INF/pages/user/login.jsp</result>
+        </action>
+        <action name="loginJson" class="com.wintv.lottery.user.action.UserAction" method="loginJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="logoutJson" class="com.wintv.lottery.user.action.UserAction" method="logoutJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="isLoginJson" class="com.wintv.lottery.user.action.UserAction" method="isLoginJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getUsernameJson" class="com.wintv.lottery.user.action.UserAction" method="getUsernameJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getFundJson" class="com.wintv.lottery.user.action.UserAction" method="getFundJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getPayInfoJson" class="com.wintv.lottery.user.action.UserAction" method="getPayInfoJson">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+ 	<!-- 用户注册 -->   
+    <package name="user.register" namespace="/user"  extends="lottery-default">
+    	<action name="doRegister" class="com.wintv.lottery.user.action.UserAction" method="register">
+            <result name="success">/WEB-INF/pages/user/register_success.jsp</result>
+            <result name="error" type="redirect">/common/error/500.htm</result>
+            <result name="input">/user/register.html</result>
+        </action>
+    	<action name="register" class="com.wintv.lottery.user.action.UserAction" method="preRegister">
+            <result name="success">/WEB-INF/pages/user/register.jsp</result>
+            <result name="error" type="redirect">/common/error/500.htm</result>
+        </action>
+        <action name="checkLoginName" class="com.wintv.lottery.user.action.UserAction" method="checkLoginName">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="checkEmail" class="com.wintv.lottery.user.action.UserAction" method="checkEmail">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="checkCheckcode" class="com.wintv.lottery.user.action.UserAction" method="checkCheckcode">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+	<!-- 更新用户资料 -->
+    <package name="user.update" namespace="/user" extends="lottery-default">   
+        <action name="*UserInfo" class="com.wintv.lottery.user.action.UserAction" method="{1}UserInfo">
+            <result name="success">/WEB-INF/pages/user/updateUserInfo.jsp</result>
+            <result name="preUpdateLPUserInfo">/WEB-INF/pages/user/updateUserLP.jsp</result>
+            <result name="updateUserBank">/WEB-INF/pages/user/updateUserBank.jsp</result>
+            <result name="input">/common/error/500.htm</result>
+            <result name="login" type="redirect">/user/login.html</result>
+            <interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+    </package>   
+    
+ 	<!-- 用户发送邮件 -->
+     <package name="user.mail" namespace="/user/mail"  extends="lottery-default">
+        <action name="mail_*" class="com.wintv.lottery.user.action.UserAction" method="{1}">
+        	<result name="retrieveLP1">/WEB-INF/pages/user/mail/retrieveLP1.jsp</result>
+        	<result name="retrieveLP2">/WEB-INF/pages/user/mail/retrieveLP2.jsp</result>
+        	<result name="retrieveLP31">/WEB-INF/pages/user/mail/retrieveLP31.jsp</result>
+        	<result name="retrieveLP32">/WEB-INF/pages/user/mail/retrieveLP32.jsp</result>
+        	<result name="retrieveLP42">/WEB-INF/pages/user/mail/retrieveLP42.jsp</result>
+        	<result name="retrieveLP5">/WEB-INF/pages/user/mail/retrieveLP5.jsp</result>
+        	<result name="retrieveLP6">/WEB-INF/pages/user/mail/retrieveLP6.jsp</result>
+        	<result name="retrieveTip2">/WEB-INF/pages/user/mail/retrieveTip2.jsp</result>
+        	<result name="retrieveTip5">/WEB-INF/pages/user/mail/retrieveTip5.jsp</result>
+        	<result name="retrieveTip6">/WEB-INF/pages/user/mail/retrieveTip6.jsp</result>
+        	<result name="retrieveWithdraw5">/WEB-INF/pages/user/mail/retrieveWithdraw5.jsp</result>
+        	<result name="retrieveWithdraw6">/WEB-INF/pages/user/mail/retrieveWithdraw6.jsp</result>
+        	<result name="input">/common/error/500.htm</result>
+        </action>
+        <action name="validator_*" class="com.wintv.lottery.user.action.UserAction" method="validator{1}">
+        	<result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>	
+    </package>
+</struts>

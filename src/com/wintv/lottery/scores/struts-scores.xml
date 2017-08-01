@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>		
+	 <package name="lottery.scores" namespace="/scores"  extends="lottery-default">
+        <action name="list" class="com.wintv.lottery.scores.action.ScoresAction" method="list">
+            <result name="success">/WEB-INF/pages/scores/bifen.jsp</result>
+            <result name="error">/common/error/404.htm</result>
+            <result name="input">/common/error/500.htm</result>
+        </action>
+        <action name="getScores" class="com.wintv.lottery.scores.action.ScoresAction" method="getScores">
+            <result name="success">/WEB-INF/pages/scores/bifen.jsp</result>
+            <result name="error">/common/error/404.htm</result>
+            <result name="input">/common/error/500.htm</result>
+        </action>
+    </package>
+</struts>

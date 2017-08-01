@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 足球单场模块 -->
+	<package name="lottery.bet.single" namespace="/bet/single"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!--足球单场action前缀说明：dsdg单式代购,dshm单式合买,fsdg复式代购,fshm复式合买;同时jsp后缀和action前缀保持一致-->
+		
+		<!-- 参与合买 -->
+		<action name="togetherBuy"
+			class="com.wintv.lottery.bet.action.SingleTogetherBuyAction" method="togetherBuy">
+			<result name="success">/WEB-INF/pages/bet/single_cyhm.jsp</result>
+		</action>
+		<action name="*TogetherBuyJson"
+			class="com.wintv.lottery.bet.action.SingleTogetherBuyAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<!-- 让球胜平负 -->
+		<action name="*WinDrawLose"
+			class="com.wintv.lottery.bet.action.SingleWinDrawLoseAction">
+			<result name="success">/WEB-INF/pages/bet/single_windrawlose_{1}.jsp</result>
+		</action>
+		<action name="*WinDrawLoseJson"
+			class="com.wintv.lottery.bet.action.SingleWinDrawLoseAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 总进球数 -->
+		<action name="*TotalGoal"
+			class="com.wintv.lottery.bet.action.SingleTotalGoalAction">
+			<result name="success">
+				/WEB-INF/pages/bet/single_total_goal_{1}.jsp
+			</result>
+		</action>
+		<action name="*TotalGoalJson"
+			class="com.wintv.lottery.bet.action.SingleTotalGoalAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 上下单双 -->
+		<action name="*UpDown"
+			class="com.wintv.lottery.bet.action.SingleUpDownAction">
+			<result name="success">
+				/WEB-INF/pages/bet/single_up_down_{1}.jsp
+			</result>
+		</action>
+		<action name="*UpDownJson"
+			class="com.wintv.lottery.bet.action.SingleUpDownAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 比分 -->
+		<action name="*Odds"
+			class="com.wintv.lottery.bet.action.SingleOddsAction">
+			<result name="success">
+				/WEB-INF/pages/bet/single_odds_{1}.jsp
+			</result>
+		</action>
+		<action name="*OddsJson"
+			class="com.wintv.lottery.bet.action.SingleOddsAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 半全场 -->
+		<action name="*HalfComplete"
+			class="com.wintv.lottery.bet.action.SingleHalfCompleteAction">
+			<result name="success">
+				/WEB-INF/pages/bet/single_half_complete_{1}.jsp
+			</result>
+		</action>
+		<action name="*HalfCompleteJson"
+			class="com.wintv.lottery.bet.action.SingleHalfCompleteAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<!-- 胜负14场模块 -->
+	<package name="lottery.bet.windraw" namespace="/bet/windraw"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 复式代购 -->
+		<action name="winDraw14Display"
+			class="com.wintv.lottery.bet.action.WinDraw14Action"
+			method="display">
+			<result name="success">/WEB-INF/pages/bet/windraw14.jsp</result>
+		</action>
+		<action name="winDraw14Bet"
+			class="com.wintv.lottery.bet.action.WinDraw14Action"
+			method="betting">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 参与合买 -->
+		<action name="togetherBuy"
+			class="com.wintv.lottery.bet.action.Windraw14TogetherBuyAction" method="togetherBuy">
+			<result name="success">/WEB-INF/pages/bet/windraw14_cyhm.jsp</result>
+		</action>
+		<action name="*TogetherBuyJson"
+			class="com.wintv.lottery.bet.action.Windraw14TogetherBuyAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="duplexShoppingGoal4Validator" class="com.wintv.lottery.bet.action.DuplexShoppingGoal4Action" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+	</package>
+	<!-- 上传文件内容后台验证功能 -->
+	<package name="lottery.bet.duplex.shopping" namespace="/bet/duplex/shopping" extends="json-default">
+		<!-- 胜负14场复式代购 -->
+		<action name="winDraw14Validator" class="com.wintv.lottery.bet.action.WinDraw14Action" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+		<!-- 任选9场复式代购 -->
+		<action name="duplexShoppingOptional9Validator" class="com.wintv.lottery.bet.action.DuplexShoppingOptional9Action" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+		<!-- 6场半全场复式代购 -->
+		<action name="duplexShoppingHalfComplete6Validator" class="com.wintv.lottery.bet.action.DuplexShoppingHalfComplete6Action" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+		<!-- 4场进球复式代购 -->
+		<action name="duplexShoppingGoal4Validator" class="com.wintv.lottery.bet.action.DuplexShoppingGoal4Action" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+		<action name="upload" class="com.wintv.lottery.bet.action.UploadFileAction" method="validator">
+			<result type="json">
+				<param name="root">result</param>
+			</result> 
+		</action>
+	</package>
+	<!-- 文件上传功能 -->
+	<package name="lottery.upload" extends="struts-default" namespace="/bet">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 胜负14场复式代购 -->
+		<action name="winDrawFileUpload"
+			class="com.wintv.lottery.bet.action.WinDraw14Action"
+			method="betting">
+			<result name="success">/WEB-INF/pages/bet/windraw14.jsp</result>
+		</action>
+		<!-- 任选9场复式代购 -->
+		<action name="duplexShoppingOptional9FileUpload"
+			class="com.wintv.lottery.bet.action.DuplexShoppingOptional9Action"
+			method="betting">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_optional9.jsp</result>
+		</action>
+		<!-- 6场半全场复式代购 -->
+		<action name="duplexShoppingHalfComplete6FileUpload"
+			class="com.wintv.lottery.bet.action.DuplexShoppingHalfComplete6Action"
+			method="betting">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_half_complete_6.jsp</result>
+		</action>
+		<!-- 4场进球复式代购 -->
+		<action name="duplexShoppingGoal4FileUpload"
+			class="com.wintv.lottery.bet.action.DuplexShoppingGoal4Action"
+			method="betting">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_half_complete_6.jsp</result>
+		</action>
+	</package>	
+	
+	<!-- 发起合买模块,涉及到彩种有:胜负14场,任选9场,6场半全场,4场进球 (注:不包括北京单场)-->
+	<package name="lottery.bet.fqhm" extends="lottery-default" namespace="/bet/fqhm">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<action name="index"
+			class="com.wintv.lottery.bet.action.ReleaseTogetherBuyAction">
+			<result name="success">
+					/WEB-INF/pages/bet/fqhm/common_fqhm.jsp
+			</result>
+		</action>
+		<action name="*FqhmJson"
+				class="com.wintv.lottery.bet.action.ReleaseTogetherBuyAction"
+				method="{1}">
+				<interceptor-ref name="fileUpload"/>   
+  				<interceptor-ref name="defaultStack" />  
+				<result type="json">
+					<param name="root">result</param>
+				</result>
+		</action>
+	</package>
+	<!-- 复式代购模块,涉及到彩种有:胜负14场,任选9场,6场半全场,4场进球 (注:不包括北京单场)-->
+	<package name="lottery.bet.fsdg" extends="lottery-default" namespace="/bet/fsdg">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<action name="*FsdgJson"
+				class="com.wintv.lottery.bet.action.FsdgAction"
+				method="{1}">
+				<interceptor-ref name="fileUpload"/>   
+  				<interceptor-ref name="defaultStack" />  
+				<result type="json">
+					<param name="root">result</param>
+				</result>
+		</action>
+	</package>
+	<package name="lottery.bet" extends="lottery-default" namespace="/bet">
+	<!-- 投注模块公用Action -->
+		<action name="*BetJson"
+			class="com.wintv.lottery.bet.action.BetAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	
+	</package>
+	<!-- 任选9场模块 -->
+	<package name="lottery.bet.optional" namespace="/bet/optional"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 复式代购 -->
+		<action name="duplexShoppingOptiona19Display"
+			class="com.wintv.lottery.bet.action.DuplexShoppingOptional9Action"
+			method="display">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_optional9.jsp</result>
+		</action>
+		<action name="duplexShoppingOptiona19Bet"
+			class="com.wintv.lottery.bet.action.DuplexShoppingOptional9Action"
+			method="betting">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 参与合买 -->
+		<action name="togetherBuy"
+			class="com.wintv.lottery.bet.action.Optional9TogetherBuyAction" method="togetherBuy">
+			<result name="success">/WEB-INF/pages/bet/optional9_cyhm.jsp</result>
+		</action>
+		<action name="*TogetherBuyJson"
+			class="com.wintv.lottery.bet.action.Optional9TogetherBuyAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<!-- 6场半全场 -->
+	<package name="lottery.bet.halfcomp" namespace="/bet/halfcomp" 
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 复式代购 -->
+		<action name="duplexShoppingHalfComplete6Display"
+			class="com.wintv.lottery.bet.action.DuplexShoppingHalfComplete6Action"
+			method="display">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_half_complete_6.jsp</result>
+		</action>
+		<action name="duplexShoppingHalfComplete6Bet"
+			class="com.wintv.lottery.bet.action.DuplexShoppingHalfComplete6Action"
+			method="betting">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 参与合买 -->
+		<action name="togetherBuy"
+			class="com.wintv.lottery.bet.action.HalfComplete6TogetherBuyAction" method="togetherBuy">
+			<result name="success">/WEB-INF/pages/bet/half_complete_6_cyhm.jsp</result>
+		</action>
+		<action name="*TogetherBuyJson"
+			class="com.wintv.lottery.bet.action.HalfComplete6TogetherBuyAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<!-- 4场进球 -->
+	<package name="lottery.bet.goal" namespace="/bet/goal" extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 复式代购 -->
+		<action name="duplexShoppingGoal4Display"
+			class="com.wintv.lottery.bet.action.DuplexShoppingGoal4Action"
+			method="display">
+			<result name="success">/WEB-INF/pages/bet/duplex_shopping_goal_4.jsp</result>
+		</action>
+		<action name="duplexShoppingGoal4Bet"
+			class="com.wintv.lottery.bet.action.DuplexShoppingGoal4Action"
+			method="betting">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 参与合买 -->
+		<action name="togetherBuy"
+			class="com.wintv.lottery.bet.action.Goal4TogetherBuyAction" method="togetherBuy">
+			<result name="success">/WEB-INF/pages/bet/goal4_cyhm.jsp</result>
+		</action>
+		<action name="*TogetherBuyJson"
+			class="com.wintv.lottery.bet.action.Goal4TogetherBuyAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<!-- 投注记录 -->
+	<package name="lottery.bet.record" namespace="/bet"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<action name="mybetrecord"
+			class="com.wintv.lottery.bet.action.MyBetOrderAction"
+			>
+			<result name="success">/WEB-INF/pages/bet/mybetorder/all_list.jsp</result>
+			
+			<result name="daigou_list">/WEB-INF/pages/bet/mybetorder/daigou_list.jsp</result>
+			<result name="canyu_list">/WEB-INF/pages/bet/mybetorder/canyu_list.jsp</result>
+			<result name="faqi_list">/WEB-INF/pages/bet/mybetorder/faqi_list.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="mybetrecorddetail"
+			class="com.wintv.lottery.bet.action.MyBetOrderAction"
+			method="detail">
+			<result name="success">/WEB-INF/pages/bet/mybetorder/coop_detail.jsp</result>
+		    <result name="daigou.14.detail">/WEB-INF/pages/bet/mybetorder/daigou_14_detail.jsp</result>
+		    <result name="single.daigou.detail">/WEB-INF/pages/bet/mybetorder/single_daigou_detail.jsp</result>
+		    
+		    <result name="faqi.63.detail">/WEB-INF/pages/bet/mybetorder/faqi_63detail.jsp</result>
+		</action>
+		<action name="*Json"
+			class="com.wintv.lottery.bet.action.MyBetOrderAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	
+      <action name="downloadTxt"
+			class="com.wintv.lottery.bet.action.DownloadTxtAction">
+			 <!-- result的Type必须为stream -->
+  				<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">
+					attachment;filename="${downloadFileName}"
+				</param>
+				<param name="bufferSize">409600</param>
+			</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		
+	</package>
+	
+	
+	<package name="lottery.bet.ds" namespace="/bet/ds" extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 单式代购 -->
+		<action name="*Dsdg" class="com.wintv.lottery.bet.action.DsdgAction">
+			<result name="success">/WEB-INF/pages/bet/dsdg/dsdg_{1}.jsp</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 单式发起合买 -->
+		<action name="*Dshm" class="com.wintv.lottery.bet.action.DshmAction">
+			<result name="success">/WEB-INF/pages/bet/dshm/dshm_{1}.jsp</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>	
+	
+	<!-- 单式上传文件 -->
+	<package name="lottery.bet.ds.upload" namespace="/bet/ds" extends="json-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 单式代购 -->
+		<action name="dsdg_*" class="com.wintv.lottery.bet.action.DsdgAction" method="{1}">
+			<param name="savePath">/dsdg</param>
+			<result type="json">
+				<param name="contentType">text/html</param>
+				<param name="root">result</param>
+			</result> 
+		</action>
+		<!-- 单式发起合买 -->
+		<action name="dshm_*" class="com.wintv.lottery.bet.action.DshmAction" method="{1}">
+			<param name="savePath">/dshm</param>
+			<result type="json">
+				<param name="contentType">text/html</param>
+				<param name="root">result</param>
+			</result> 
+		</action>
+	</package>	
+	
+	
+	<package name="lottery.bet.gendan" namespace="/bet/gendan" extends="lottery-default">
+		<action name="*Gendan" class="com.wintv.lottery.bet.action.GendanAction">
+			<result name="success">/WEB-INF/pages/bet/gendan/gendan_{1}.jsp</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<action name="*GendanJson"
+			class="com.wintv.lottery.bet.action.GendanAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 方案详情 -->
+	<package name="lottery.bet.plan" namespace="/bet/plan"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<action name="windraw14Single" class="com.wintv.lottery.bet.plan.hm.action.Windraw14SingleAction" method="windraw14Single">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/windraw14_ds.jsp</result>
+		</action>
+		<action name="windraw14Duplex" class="com.wintv.lottery.bet.plan.hm.action.Windraw14DuplexAction" method="windraw14Duplex">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/windraw14_fs.jsp</result>
+		</action>
+		<action name="optional9Single" class="com.wintv.lottery.bet.plan.hm.action.Optional9SingleAction" method="optional9Single">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/optional9_ds.jsp</result>
+		</action>
+		<action name="optional9Duplex" class="com.wintv.lottery.bet.plan.hm.action.Optional9DuplexAction" method="optional9Duplex">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/optional9_fs.jsp</result>
+		</action>
+		<action name="halfComplete6Single" class="com.wintv.lottery.bet.plan.hm.action.HalfComplete6SingleAction" method="halfComplete6Single">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/half_complete_6_ds.jsp</result>
+		</action>
+		<action name="halfComplete6Duplex" class="com.wintv.lottery.bet.plan.hm.action.HalfComplete6DuplexAction" method="halfComplete6Duplex">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/half_complete_6_fs.jsp</result>
+		</action>
+		<action name="goal4Single" class="com.wintv.lottery.bet.plan.hm.action.Goal4SingleAction" method="goal4Single">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/goal4_ds.jsp</result>
+		</action>
+		<action name="goal4Duplex" class="com.wintv.lottery.bet.plan.hm.action.Goal4DuplexAction" method="goal4Duplex">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/goal4_fs.jsp</result>
+		</action>
+		<action name="singleSingle" class="com.wintv.lottery.bet.plan.hm.action.SingleSingleAction" method="singleSingle">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/single_ds.jsp</result>
+		</action>
+		<action name="singleDuplex" class="com.wintv.lottery.bet.plan.hm.action.SingleDuplexAction" method="singleDuplex">
+			<result name="success">/WEB-INF/pages/bet/plan/hm/single_fs.jsp</result>
+		</action>
+		<action name="planDaigou" class="com.wintv.lottery.bet.plan.dg.action.DaigouAction" method="planDaigou">
+			<result name="single">/WEB-INF/pages/bet/plan/dg/single.jsp</result>
+			<result name="duplex">/WEB-INF/pages/bet/plan/dg/duplex.jsp</result>
+		</action>
+		<action name="*HemaiJson" class="com.wintv.lottery.bet.plan.hm.action.HemaiAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="*DaigouJson" class="com.wintv.lottery.bet.plan.dg.action.DaigouJson" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+    </package>
+    
+    <!-- 方案详情转发 -->
+    <package name="lottery.bet.planDetail" namespace="/bet"
+		extends="lottery-default">
+		<action name="planDetail" class="com.wintv.lottery.bet.plan.action.PlanDetailAction" method="planDetail">
+			<result name="windraw14Single">/bet/plan/windraw14Single.html</result>
+			<result name="windraw14Duplex">/bet/plan/windraw14Duplex.html</result>
+			<result name="optional9Single">/bet/plan/optional9Single.html</result>
+			<result name="optional9Duplex">/bet/plan/optional9Duplex.html</result>
+			<result name="halfComplete6Single">/bet/plan/halfComplete6Single.html</result>
+			<result name="halfComplete6Duplex">/bet/plan/halfComplete6Duplex.html</result>
+			<result name="goal4Single">/bet/plan/goal4Single.html</result>
+			<result name="goal4Duplex">/bet/plan/goal4Duplex.html</result>
+			<result name="singleSingle">/bet/plan/singleSingle.html</result>
+			<result name="singleDuplex">/bet/plan/singleDuplex.html</result>
+			<result name="planDaigou">/bet/plan/planDaigou.html?betCategory=${betCategory}</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+	</package>
+    
+    <!-- 方案修改 -->
+    <package name="lottery.bet.modify" namespace="/bet/modify"
+		extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<action name="upload" class="com.wintv.lottery.bet.modify.action.UploadAction" method="upload">
+			<result name="success">/WEB-INF/pages/bet/modify/upload.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="modify" class="com.wintv.lottery.bet.modify.action.ModifyAction" method="modify">
+			<result name="windraw14">/WEB-INF/pages/bet/modify/modify_windraw14.jsp</result>
+			<result name="optional9">/WEB-INF/pages/bet/modify/modify_optional9.jsp</result>
+			<result name="halfComplete6">/WEB-INF/pages/bet/modify/modify_half_complete_6.jsp</result>
+			<result name="goal4">/WEB-INF/pages/bet/modify/modify_goal4.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="*UploadJson" class="com.wintv.lottery.bet.modify.action.UploadAction" method="{1}">
+			<interceptor-ref name="fileUpload"/>   
+			<interceptor-ref name="defaultStack" />
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="*ModifyJson" class="com.wintv.lottery.bet.modify.action.ModifyAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	
+</struts>

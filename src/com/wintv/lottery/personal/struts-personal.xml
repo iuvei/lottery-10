@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 个人中心 -->		
+	 <package name="lottery.personal" namespace="/personal" extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		<!-- 个人中心页面整体显示 -->
+        <action name="personalCentre" class="com.wintv.lottery.personal.action.PersonallCentreAction" method="display">
+			<result name="success">/WEB-INF/pages/personal/personalCentre.jsp</result>
+        </action>
+        <!-- ajax加载主业列表内容 -->
+        <action name="loadIndexList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadIndexContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载当前投注列表内容 -->
+        <action name="loadCurrentBetList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadCurrentBetContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载当前心水列表内容 -->
+        <action name="loadCurrentXinShuiList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadCurrentXinShuiContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载历史战绩 合买历史战绩列表内容 -->
+        <action name="loadHistoryRecordHeMaiList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadHistoryRecordHeMaiContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载历史战绩 心水历史记录列表内容 -->
+		<action name="loadHistoryRecordXinShuiList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadHistoryRecordXinShuiContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载他关注的人 关注他的人列表内容 -->
+		<action name="loadAttentionPlanList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadAttentionPlanContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- ajax加载他的关注列表内容 -->
+        <action name="loadHisConcernList"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="loadHisConcernContent">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 修改个性签名 -->
+		<action name="modifySignatrue"
+			class="com.wintv.lottery.personal.action.PersonallCentreAction"
+			method="ajaxModifySignatrue">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+    </package>
+</struts>

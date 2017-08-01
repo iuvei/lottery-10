@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 足球单场模块 -->
+	<package name="lottery.index.singlebet" namespace="/index/bet" extends="lottery-default">
+		<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+		
+		
+		<!-- 单场 -->
+		<action name="fsdg_*" class="com.wintv.lottery.index.action.BetIndexAction">
+			<result name="success">/WEB-INF/pages/homepage/bet/fsdg_{1}.jsp</result>
+		</action>
+		<!-- 胜负彩首页 -->
+		<action name="wdlose" class="com.wintv.lottery.index.action.BetIndexAction">
+			<result name="success">/bet/wdlose.jsp</result>
+		</action>
+		<!-- 足球单场首页 -->
+		<action name="single" class="com.wintv.lottery.index.action.BetIndexAction">
+			<result name="success">/bet/single.jsp</result>
+		</action>
+		<!-- 进球彩首页 -->
+		<action name="goal" class="com.wintv.lottery.index.action.BetIndexAction">
+			<result name="success">/bet/in_goal.jsp</result>
+		</action>
+		<action name="*BuyJson" class="com.wintv.lottery.index.action.BetIndexAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="*IndexJson" class="com.wintv.lottery.index.action.IndexAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="*RankingJson" class="com.wintv.lottery.index.action.RankingAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="hot_search" class="com.wintv.lottery.index.action.BetIndexAction" method="hot_search">
+			<result name="success">/bet/wdlose.jsp</result>
+		</action>
+		
+	</package>
+	
+</struts>

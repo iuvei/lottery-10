@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<!-- 心水-->		
+	 <package name="xinshui" namespace="/xinshui" extends="lottery-default">
+	 	<!-- 发布心水 -->
+        <action name="releaseChoice" class="com.wintv.lottery.xinshui.action.XinshuiReleaseAction">
+			<result name="success">/WEB-INF/pages/xinshui/release_choice.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="releasePrediction" class="com.wintv.lottery.xinshui.action.XinshuiReleaseAction">
+			<result name="success">/WEB-INF/pages/xinshui/release_prediction.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*ReleaseJson" class="com.wintv.lottery.xinshui.action.XinshuiReleaseAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 发布心水管理 -->
+        <action name="releaseManage" class="com.wintv.lottery.xinshui.action.XinshuiReleaseManageAction">
+			<result name="success">/WEB-INF/pages/xinshui/release_manage.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="xinshuiDetail" class="com.wintv.lottery.xinshui.action.XinshuiReleaseManageAction">
+			<result name="success">/WEB-INF/pages/xinshui/xinshui_detail.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*ReleaseManageJson" class="com.wintv.lottery.xinshui.action.XinshuiReleaseManageAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 心水销售管理 -->
+        <action name="saleManage" class="com.wintv.lottery.xinshui.action.XinshuiSaleManageAction">
+			<result name="success">/WEB-INF/pages/xinshui/sale_manage.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*SaleManageJson" class="com.wintv.lottery.xinshui.action.XinshuiSaleManageAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- 心水订单管理 -->
+        <action name="buyManage" class="com.wintv.lottery.xinshui.action.XinshuiBuyManageAction">
+			<result name="success">/WEB-INF/pages/xinshui/buy_manage.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="*BuyManageJson" class="com.wintv.lottery.xinshui.action.XinshuiBuyManageAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- C2C民间高手心水销售 -->
+        <action name="c2c" class="com.wintv.lottery.xinshui.action.XinshuiBuyAction">
+			<result name="success">/WEB-INF/pages/xinshui/c2c.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+        </action>
+        <action name="*BuyJson" class="com.wintv.lottery.xinshui.action.XinshuiBuyAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</action>
+		<!-- C2C心水支付 -->
+		<action name="pay" class="com.wintv.lottery.xinshui.action.XinshuiPayAction" method="excute">
+			<result name="success">/WEB-INF/pages/xinshui/xinshui_pay.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+        </action>
+        <action name="pay2" class="com.wintv.lottery.xinshui.action.XinshuiPayAction" method="pay2">
+			<result name="success">/WEB-INF/pages/xinshui/xinshui_pay2.jsp</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+        </action>
+		<action name="*PayJson" class="com.wintv.lottery.xinshui.action.XinshuiPayAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+    </package>
+ 	
+</struts>

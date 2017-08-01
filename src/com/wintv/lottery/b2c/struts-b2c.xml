@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- B2c-->		
+	 <package name="b2c" namespace="/b2c" extends="lottery-default">
+	 	<global-results>
+			<result name="error">/common/error/404.htm</result>
+			<result name="input">/common/error/500.htm</result>
+		</global-results>
+        <action name="index" class="com.wintv.lottery.b2c.action.B2CAction">
+			<result name="success">/WEB-INF/pages/b2c/index.jsp</result>
+        </action>
+        <action name="myB2cOrders" class="com.wintv.lottery.b2c.action.B2CAction">
+			<result name="success">/WEB-INF/pages/b2c/my_b2c_orders.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+			<interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+        </action>
+        <action name="expertHome" class="com.wintv.lottery.b2c.action.B2CAction">
+			<result name="success">/WEB-INF/pages/b2c/b2c_detail.jsp</result>
+        </action>        
+        <action name="pay" class="com.wintv.lottery.b2c.action.B2cPayAction" method="excute">
+			<result name="success">/WEB-INF/pages/b2c/b2c_pay.jsp</result>
+			<result name="login" type="redirect">/user/login.html</result>
+        </action> 
+         <action name="*PayJson"
+			class="com.wintv.lottery.b2c.action.B2cPayAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+        <action name="*B2cJson"
+			class="com.wintv.lottery.b2c.action.B2CAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+    </package>
+ 	
+</struts>

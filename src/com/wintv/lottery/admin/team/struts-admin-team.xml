@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<!-- 球队资料 -->
+     <package name="admin.team" namespace="/admin/team"  extends="lottery-default">
+        <action name="*Json" class="com.wintv.lottery.admin.team.action.TeamAction" method="{1}">
+			<result type="json"/>
+		</action>
+		<action name="index" class="com.wintv.lottery.admin.team.action.TeamAction" method="index">
+        	<result name="index">/WEB-INF/pages/admin/team/index.jsp</result>
+        </action>
+        <action name="left" class="com.wintv.lottery.admin.team.action.TeamAction" method="left">
+        	<result name="left">/WEB-INF/pages/admin/team/left.jsp</result>
+        </action>
+        
+		<action name="district_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="district{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/districtList.jsp</result>
+        </action>
+        
+        <action name="team_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="team{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/teamList.jsp</result>
+        	<result name="preUpdate">/WEB-INF/pages/admin/team/preUpdateTeam.jsp</result>
+        	<result name="preAdd">/WEB-INF/pages/admin/team/preAddTeam.jsp</result>
+        	<result name="detail">/WEB-INF/pages/admin/team/teamDetail.jsp</result>
+        </action>
+        
+        
+        <action name="teamManager_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="teamManager{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/teamManagerList.jsp</result>
+        </action>
+        
+        
+        <action name="against_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="against{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/againstList.jsp</result>
+        </action>
+        
+        <action name="leagueRace_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="leagueRace{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/leagueRaceList.jsp</result>
+        </action>
+        
+        <action name="leagueTeam_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="leagueTeam{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/leagueTeamList.jsp</result>
+        	<result name="addTeam">/WEB-INF/pages/admin/team/leagueTeamChooseTeam.jsp</result>
+        </action>
+        
+        <action name="leagueAgainst_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="leagueAgainst{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/leagueAgainstList.jsp</result>
+        	<result name="add">/WEB-INF/pages/admin/team/leagueAgainstAdd.jsp</result>
+        	<result name="edit">/WEB-INF/pages/admin/team/leagueAgainstEdit.jsp</result>
+        </action>
+        
+        <action name="cupRace_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="cupRace{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/cupRaceList.jsp</result>
+        </action>
+        
+        <action name="cupTeam_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="cupTeam{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/cupTeamList.jsp</result>
+        </action>
+        
+        <action name="cupAgainst_*" class="com.wintv.lottery.admin.team.action.TeamAction" method="cupAgainst{1}">
+        	<result name="index">/WEB-INF/pages/admin/team/cupAgainstList.jsp</result>
+        	<result name="add">/WEB-INF/pages/admin/team/cupAgainstAdd.jsp</result>
+        	<result name="edit">/WEB-INF/pages/admin/team/cupAgainstEdit.jsp</result>
+        </action>
+        
+    </package>
+
+</struts>

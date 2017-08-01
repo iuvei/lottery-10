@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	 <package name="mycenter" namespace="/"  extends="lottery-default">
+		<action name="mycenter" class="com.wintv.lottery.mycenter.action.MycenterAction" method="mycenter">
+			<result name="success">/mycenter/mycenter_index.jsp</result>
+			<result name="error">/common/error/500.htm</result>
+		</action>
+		
+		<action name="mylottery" class="com.wintv.lottery.mycenter.action.MylotteryAction" method="mylottery">
+			<result name="success">/mycenter/mylottery_index.jsp</result>
+			<result name="error">/common/error/500.htm</result>
+			<result name="login" type="redirect">/user/login.html</result>
+	        <interceptor-ref name="isLoginHandleInterceptor"></interceptor-ref>
+	        <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="hall" class="com.wintv.lottery.mycenter.action.HallAction" method="hall">
+			<result name="success">/mycenter/hall_index.jsp</result>
+			<result name="error">/common/error/500.htm</result>
+		</action>
+		
+		<action name="*MylotteryJson" class="com.wintv.lottery.mycenter.action.MylotteryAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="*HallJson" class="com.wintv.lottery.mycenter.action.HallAction" method="{1}">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+</struts>
+
+
+

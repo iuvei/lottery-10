@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.domain.user.Permission" table="PERMISSIONS" dynamic-insert="true" dynamic-update="true">
+        <id name="id" type="java.lang.Long">
+            <column name="Id" />
+            <generator class="native" />
+        </id>
+        <property name="name" column="NAME" not-null="true"/>
+        <property name="descn" column="DESCN"/>
+        <set name="roles" table="ROLE_PERMIS" lazy="true" inverse="true" cascade="save-update">
+            <key>
+                <column name="PERMIS_ID" not-null="true"/>
+            </key>
+            <many-to-many class="com.wintv.framework.domain.user.Role" column="ROLE_ID" outer-join="auto"/>
+        </set>
+        <set name="resources" table="PERMIS_RESC" lazy="true" inverse="false" cascade="save-update">
+            <key>
+                <column name="PERMIS_ID" not-null="true"/>
+            </key>
+            <many-to-many class="com.wintv.framework.domain.user.Resource" column="RESC_ID"/>
+        </set>
+    </class>
+
+</hibernate-mapping>
