@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.TeamRace" table="T_TEAM_RACE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_TEAM_RACE_ID</param>
+            </generator>
+        </id>
+        <property name="teamId" type="java.lang.Long">
+            <column name="TEAM_ID" precision="20" scale="0" />
+        </property>
+        <property name="teamName" type="java.lang.String">
+            <column name="TEAM_NAME" length="100" />
+        </property>
+        <property name="raceId" type="java.lang.Long">
+            <column name="RACE_ID" precision="20" scale="0" />
+        </property>
+        <property name="raceTime" type="java.util.Date">
+            <column name="RACE_TIME" length="7" />
+        </property>
+        <property name="raceSeasonId" type="java.lang.Long">
+            <column name="RACE_SEASON_ID" precision="20" scale="0" />
+        </property>
+        <property name="raceSeasonName" type="java.lang.String">
+            <column name="RACE_SEASON_NAME" length="60" />
+        </property>
+        <property name="countryId" type="java.lang.Long">
+            <column name="COUNTRY_ID" precision="20" scale="0" />
+        </property>
+        <property name="countryName" type="java.lang.String">
+            <column name="COUNTRY_NAME" length="60" />
+        </property>
+        <property name="areaId" type="java.lang.Long">
+            <column name="AREA_ID" precision="20" scale="0" />
+        </property>
+        <property name="areaName" type="java.lang.String">
+            <column name="AREA_NAME" length="60" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC
+        "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="updateXmlJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.wintv.lottery.scores.schedule.ReadXmlQuartz"/>
+	</bean>
+	
+	<bean id="updateXMLTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref local="updateXmlJobDetail" />
+		</property>
+		<property name="cronExpression">
+			<value>0,10,20,30,40,50 * * *,* * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="quartzScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="updateXMLTrigger" />	
+			</list>
+		</property>
+	</bean>			
+	
+</beans>	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Adv" table="T_ADV">
+        <comment>广告</comment>
+        <id column="ADV_ID" name="advId" type="java.lang.Long">
+         <generator class="sequence">
+           <param name="sequence">SEQ_ADV_ID</param>
+         </generator>
+        </id>
+       
+        
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" length="100">
+                <comment>标题</comment>
+            </column>
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT">
+                <comment>主要内容</comment>
+            </column>
+        </property>
+        <property name="attach" type="java.lang.String">
+            <column name="ATTACH" length="200">
+                <comment>附件</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

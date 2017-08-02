@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.UserDonate" table="T_USER_DONATE">
+        <id name="udId" type="java.lang.Long">
+            <column name="UD_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_USER_DONATE_ID</param>
+            </generator>
+        </id>
+        <property name="donateId" type="java.lang.Long">
+            <column name="DONATE_ID" precision="20" scale="0" />
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="txCaijin" type="java.lang.Double">
+            <column name="TX_CAIJIN" precision="10" />
+        </property>
+        <property name="allCaijin" type="java.lang.Double">
+            <column name="ALL_CAIJIN" precision="20" />
+        </property>
+    </class>
+</hibernate-mapping>

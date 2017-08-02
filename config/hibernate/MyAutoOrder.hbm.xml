@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.MyAutoOrder" table="T_MY_AUTO_ORDER"  dynamic-insert="true" dynamic-update="true">
+        <id name="autoOrderId" type="java.lang.Long">
+            <column name="AUTO_ORDER_ID"/>
+            <generator class="sequence">
+              <param name="sequence">SEQ_MY_AUTO_ORDER_ID</param>
+            </generator>
+        </id>
+        <property name="kingId" type="java.lang.Long">
+            <column name="KING_ID"/>
+        </property>
+        <property name="userid" type="java.lang.Long">
+            <column name="USERID"/>
+        </property>
+        <property name="orderTime" type="java.util.Date">
+            <column name="ORDER_TIME"/>
+        </property>
+        <property name="minMoney" type="java.math.BigDecimal">
+            <column name="MIN_MONEY"/>
+        </property>
+        <property name="maxMoney" type="java.math.BigDecimal">
+            <column name="MAX_MONEY"/>
+        </property>
+        <property name="txMoney" type="java.math.BigDecimal">
+            <column name="TX_MONEY"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS"/>
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE"/>
+        </property>
+        <property name="orderNum" type="java.lang.Long">
+            <column name="ORDER_NUM"/>
+        </property>
+        <property name="isLackOrder" type="java.lang.String">
+            <column name="IS_LACK_ORDER"/>
+        </property>
+        <property name="category" type="java.lang.String">
+            <column name="CATEGORY"/>
+        </property>
+        <property name="kingUserId" type="java.lang.Long">
+            <column name="KING_USERID"/>
+        </property>
+    </class>
+</hibernate-mapping>

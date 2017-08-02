@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.BetHotSearch" table="T_BET_HOT_SEARCH">
+        <id name="hotId" type="java.lang.Long">
+            <column name="HOT_ID" precision="5" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_BetHotSearch_ID</param>
+         </generator>
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="USERID" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="150" />
+        </property>
+		 <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1"/>
+        </property>       
+    </class>
+</hibernate-mapping>

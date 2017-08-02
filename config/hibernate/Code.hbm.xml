@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Code" table="T_CODE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID"/>
+            <generator class="sequence">
+              <param name="sequence">SEQ_AREA_ID</param>
+            </generator>
+       </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="120" />
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="PARENT_ID"/>
+        </property>
+        <property name="root" type="java.lang.String">
+            <column name="ROOT"/>
+        </property>
+        <property name="zone" type="java.lang.Long">
+            <column name="ZONE"/>
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE"/>
+        </property>
+    </class>
+</hibernate-mapping>

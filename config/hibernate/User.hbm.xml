@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.User" table="T_USER" dynamic-insert="true" dynamic-update="true">
+        <comment>网站的用户会员信息</comment>
+        <id name="userid" type="java.lang.Long">
+            <column name="USERID" precision="20" scale="0" />
+             <generator class="sequence">
+             <param name="sequence">SEQ_USER_ID</param>
+            </generator>
+        </id>
+       
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="50" not-null="true">
+                <comment>用户名</comment>
+            </column>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" length="50" not-null="true">
+                <comment>邮件</comment>
+            </column>
+        </property>
+        <property name="loginPassword" type="java.lang.String">
+            <column name="LOGIN_PASSWORD" length="32" not-null="true">
+                <comment>登录密码</comment>
+            </column>
+        </property>
+        <property name="idCard" type="java.lang.String">
+            <column name="IDCARD" length="30" >
+                <comment>身份证号码</comment>
+            </column>
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" length="1" >
+                <comment>性别</comment>
+            </column>
+        </property>
+        <property name="tel" type="java.lang.String">
+            <column name="TEL" length="1" >
+                <comment>联系电话</comment>
+            </column>
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="PROVINCE" length="40" >
+                <comment>省份</comment>
+            </column>
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" length="100" >
+                <comment>城市</comment>
+            </column>
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="BIRTHDAY">
+                <comment>出生日期</comment>
+            </column>
+        </property>
+        
+        <property name="userGrade" type="java.lang.String">
+            <column name="USER_GRADE" length="1">
+                <comment>用户等级</comment>
+            </column>
+        </property>
+        <property name="withdrawPwd" type="java.lang.String">
+            <column name="WITHDRAW_PWD" length="32">
+                <comment>取款密码</comment>
+            </column>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="50">
+                <comment>用户真实姓名</comment>
+            </column>
+        </property>
+        <property name="passwordTip" type="java.lang.String">
+            <column name="PASSWORD_TIP"  length="1">
+                <comment>密码提示</comment>
+            </column>
+        </property>
+        <property name="passwordAnswer" type="java.lang.String">
+            <column name="PASSWORD_ANSWER" length="150">
+                <comment>密码答案</comment>
+            </column>
+        </property>
+        <property name="mp" type="java.lang.String">
+            <column name="MP" length="11">
+                <comment>手机号码</comment>
+            </column>
+        </property>
+        <property name="militaryScore" type="java.lang.Long">
+            <column name="XINSHUI_MILITARY">
+                <comment>战绩</comment>
+            </column>
+        </property>
+         <property name="regIp" type="java.lang.String">
+            <column name="REG_IP" length="16">
+                <comment>注册IP</comment>
+            </column>
+        </property>
+        <property name="qq" type="java.lang.String">
+            <column name="QQ" length="11">
+                <comment>QQ</comment>
+            </column>
+        </property>
+        <property name="loginCnt" type="java.lang.Long">
+            <column name="LOGIN_CNT" precision="10" scale="0">
+                <comment>登录次数</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1">
+                <comment>状态 1：正常  2:锁定</comment>
+            </column>
+        </property>
+        <property name="regTime" type="java.util.Date">
+            <column name="REG_TIME">
+                <comment>注册时间</comment>
+            </column>
+        </property>
+        <property name="isEmailBind" type="java.lang.String">
+            <column name="IS_EMAIL_BIND">
+                <comment>邮箱是否绑定</comment>
+            </column>
+        </property>
+        <property name="isOnline" type="java.lang.String">
+            <column name="IS_ONLINE">
+                <comment>用户是否在线 状态 1：在线  0:不在线</comment>
+            </column>
+        </property>
+        <property name="isCompleteInfo" type="java.lang.String">
+            <column name="IS_COMPLETE_INFO">
+                <comment>用户资料是否完善 状态 1：完善  0:不完善</comment>
+            </column>
+        </property>
+        <property name="betMilitary" type="java.lang.Long">
+            <column name="BET_MILITARY">
+                <comment>投注战绩</comment>
+            </column>
+        </property>
+        <property name="attentionCnt" type="java.lang.Long">
+            <column name="ATTENTION_CNT">
+                <comment>关注人数</comment>
+            </column>
+        </property>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE">
+                <comment>头衔</comment>
+            </column>
+        </property>
+        <property name="signature" type="java.lang.String">
+            <column name="SIGNATURE">
+                <comment>个人中心的个人签名</comment>
+            </column>
+        </property>
+        
+    </class>
+</hibernate-mapping>

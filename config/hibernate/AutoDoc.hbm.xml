@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.AutoDoc" table="T_AUTO_DOC">
+        <id name="adId" type="java.lang.Long">
+            <column name="AD_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_AUTO_DOC_ID</param>
+            </generator>
+        </id>
+        <property name="sponsorUserId" type="java.lang.Long">
+            <column name="SPONSOR_USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="phase" type="java.lang.String">
+            <column name="PHASE" length="10" />
+        </property>
+        <property name="lotteryType" type="java.lang.String">
+            <column name="LOTTERY_TYPE" length="2" />
+        </property>
+        <property name="militaryScore" type="java.lang.Long">
+            <column name="MILITARY_SCORE" precision="20" scale="0" />
+        </property>
+        <property name="autoMoney" type="java.lang.Double">
+            <column name="AUTO_MONEY" precision="20" />
+        </property>
+        <property name="allMoney" type="java.lang.Double">
+            <column name="ALL_MONEY" precision="20" />
+        </property>
+        <property name="docUserId" type="java.lang.Long">
+            <column name="DOC_USER_ID" precision="20" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

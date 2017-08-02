@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.LotteryPhase" table="T_LOTTERY_PHASE"  dynamic-insert="true" dynamic-update="true">
+       
+        <id name="id" type="java.lang.Long">
+            <column name="ID"/>
+            <generator class="sequence">
+           <param name="sequence">SEQ_LOTTERY_PHASE_ID</param>
+         </generator>
+        </id>
+        <property name="soldTime" type="java.util.Date">
+            <column name="SOLD_TIME"/>
+        </property>
+        <property name="phaseNo" type="java.lang.String">
+            <column name="PHASE_NO" length="16" />
+        </property>
+        <property name="mulDeadline" type="java.util.Date">
+            <column name="MUL_DEADLINE"/>
+        </property>
+        <property name="singleDeadline" type="java.util.Date">
+            <column name="S_DEADLINE"/>
+        </property>
+        <property name="tkpDeadline" type="java.util.Date">
+            <column name="TKP_DEADLINE"/>
+        </property>
+        <property name="category" type="java.lang.String">
+            <column name="CATEGORY" length="1" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="viciDeadline" type="java.lang.Long">
+            <column name="VICI_DEADLINE"/>
+        </property>
+        <property name="comboVici" type="java.lang.Long">
+            <column name="COMBO_VICI" precision="5" scale="0" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="50" />
+        </property>
+        <property name="addTime" type="java.util.Date">
+            <column name="ADD_TIME"/>
+        </property>
+        <property name="isCurrent" type="java.lang.String">
+            <column name="ISCURRENT"/>
+        </property>
+        
+         <set name="againstList" cascade="all-delete-orphan"  lazy="true">
+            <key column="PHASE_ID" />
+            <one-to-many class="com.wintv.framework.pojo.LotteryAgainst"/>
+         </set>
+          <property name="kjNo" type="java.lang.String">
+            <column name="KJ_NO"/>
+        </property>
+        <property name="kjTime" type="java.util.Date">
+            <column name="KJ_TIME"/>
+        </property>
+       
+        
+  </class>
+  </hibernate-mapping>

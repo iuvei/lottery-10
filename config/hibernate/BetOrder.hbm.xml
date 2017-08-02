@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.BetOrder" table="T_BET_ORDER" dynamic-insert="true" dynamic-update="true">
+        <id name="betId" type="java.lang.Long">
+            <column name="BET_ID" precision="20" scale="0" />
+              <generator class="assigned"/>
+       </id>
+       
+        <property name="viciWay" type="java.lang.String">
+            <column name="VICI_WAY" length="100" />
+        </property>
+        <property name="betNumber" type="java.lang.Long">
+            <column name="BET_NUMBER" precision="10" scale="0" />
+        </property>
+        <property name="phaseNo" type="java.lang.String">
+            <column name="PHASE_NO" length="10" />
+        </property>
+        <property name="betTime" type="java.util.Date">
+            <column name="BET_TIME" length="7" />
+        </property>
+        <property name="betUserid" type="java.lang.Long">
+            <column name="BET_USERID" precision="20" scale="0" />
+        </property>
+        <property name="betMulti" type="java.lang.Long">
+            <column name="BET_MULTI" precision="10" scale="0" />
+        </property>
+        <property name="plan" type="java.lang.String">
+            <column name="PLAN" length="200" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="2" />
+        </property>
+        <property name="isFloor" type="java.lang.String">
+            <column name="IS_FLOOR" length="1" />
+        </property>
+        <property name="formatStr" type="java.lang.String">
+            <column name="FORMAT_STR" length="100" />
+        </property>
+        <property name="singleMoney" type="java.math.BigDecimal">
+            <column name="SINGLE_MONEY"/>
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY" precision="20" />
+        </property>
+        <property name="divideCopys" type="java.lang.Long">
+            <column name="DIVIDE_COPYS"/>
+        </property>
+        <property name="floorCopys" type="java.lang.Long">
+            <column name="FLOOR_COPYS" precision="20" scale="0" />
+        </property>
+        <property name="securityType" type="java.lang.Integer">
+            <column name="SECURITY_TYPE"/>
+        </property>
+        <property name="recruitUsers" type="java.lang.String">
+            <column name="RECRUIT_USERS" length="500" />
+        </property>
+        <property name="planCode" type="java.lang.String">
+            <column name="PLAN_CODE" length="100" />
+        </property>
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO" length="50" />
+        </property>
+        <property name="betCategory" type="java.lang.String">
+            <column name="BET_CATEGOTY" length="2" />
+        </property>
+        <property name="orderStatus" type="java.lang.String">
+            <column name="ORDER_STATUS" length="1" />
+        </property>
+        <property name="zjStatus" type="java.lang.String">
+            <column name="ZJ_STATUS" length="1" />
+        </property>
+        <property name="betUsername" type="java.lang.String">
+            <column name="BET_USERNAME" length="300" />
+        </property>
+        <property name="sponsorType" type="java.lang.String">
+            <column name="SPONSOR_TYPE" length="1" />
+        </property>
+        <property name="sponsorBetId" type="java.lang.Long">
+            <column name="SPONSOR_BET_ID" precision="20" scale="0" />
+        </property>
+        <property name="subscribeCopys" type="java.lang.Long">
+            <column name="SUBSCRIBE_COPYS" precision="10" scale="0" />
+        </property>
+        <property name="subscribeMoney" type="java.math.BigDecimal">
+            <column name="SUBSCRIBE_MONEY" precision="20" />
+        </property>
+        <property name="bonus" type="java.math.BigDecimal">
+            <column name="BONUS"/>
+        </property>
+        <property name="tcRate" type="java.lang.Integer">
+            <column name="TC_RATE"/>
+        </property>
+        <property name="wiciType" type="java.lang.String">
+            <column name="WICI_TYPE" length="1" />
+        </property>
+        <property name="phaseId" type="java.lang.Long">
+            <column name="PHASE_ID" precision="20" scale="0" />
+        </property>
+        <property name="kingId" type="java.lang.Long">
+            <column name="KING_ID" precision="20" scale="0" />
+        </property>
+        <property name="alreadyBuyCopys" type="java.lang.Long">
+            <column name="ALREADY_BUY_COPYS" precision="20" scale="0" />
+        </property>
+        <property name="endTime" type="java.util.Date">
+            <column name="END_TIME" length="7" />
+        </property>
+        <property name="txtPath" type="java.lang.String">
+            <column name="TXT_PATH"/>
+        </property>
+       
+        <property name="planTitle" type="java.lang.String">
+            <column name="PLAN_TITLE"/>
+        </property>
+        <property name="planDesc" type="java.lang.String">
+            <column name="PLAN_DESC"/>
+        </property>
+        <property name="betSelInfo" type="java.lang.String">
+            <column name="BET_SEL_INFO"/>
+        </property>
+        <property name="correctChangCi" type="java.lang.Long">
+            <column name="CORRECT_CHANGCI"/>
+        </property>
+        <property name="isHot" type="java.lang.Long">
+            <column name="IS_HOT"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.XinshuiAgainst" table="T_XINSHUI_AGAINST">
+        <id name="id" type="java.lang.Long">
+            <column name="ID"/>
+            <generator class="sequence">
+              <param name="sequence">SEQ_XINSHUI_SCHEDULE_ID</param>
+            </generator>
+        </id>
+        <property name="deadline" type="java.util.Date">
+            <column name="DEADLINE"/>
+        </property>
+        <property name="againstId" type="java.lang.Long">
+            <column name="AGAINST_ID"/>
+        </property>
+        <property name="xinshuiResult" type="java.lang.String">
+            <column name="XINSHUI_RESULT"/>
+        </property>
+        <property name="panKou" type="java.lang.String">
+            <column name="PAN_KOU"/>
+        </property>
+    </class>
+</hibernate-mapping>

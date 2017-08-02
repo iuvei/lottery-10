@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Content" table="T_CONTENT">
+        <id name="contentId" type="java.lang.Long">
+            <column name="CONTENT_ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_CONTENT_ID</param>
+         </generator>
+        </id>
+        <property name="articleId" type="java.lang.Long">
+            <column name="ARTICLE_ID" precision="20" scale="0" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <property name="page" type="java.lang.Long">
+            <column name="PAGE" precision="2" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

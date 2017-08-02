@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.KingSponsorCategory" table="T_KING_SPONSOR_CATEGORY" dynamic-insert="true" dynamic-update="true">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_KING_SP_CAT_ID</param>
+            </generator>
+        </id>
+        <property name="betCategory" type="java.lang.String">
+            <column name="BET_CATEGORY" length="2" />
+        </property>
+        <property name="kingId" type="java.lang.Long">
+            <column name="KING_ID" precision="20" scale="0" />
+        </property>
+        <property name="status" type="java.lang.Integer">
+            <column name="STATUS"/>
+        </property>
+    </class>
+</hibernate-mapping>

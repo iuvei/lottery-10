@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.C2CProduct" table="T_C2C_PRODUCT" dynamic-insert="true" dynamic-update="true">
+        <id name="c2cId" type="java.lang.Long">
+            <column name="C2C_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_C2C_PRODUCT_ID</param>
+            </generator>
+        </id>
+        <property name="againstId" type="java.lang.Long">
+            <column name="AGAINST_ID" precision="20" scale="0" />
+        </property>
+       
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="ensureMoney" type="java.math.BigDecimal">
+            <column name="ENSURE_MONEY"/>
+        </property>
+        <property name="hostName" type="java.lang.String">
+            <column name="HOST_NAME"/>
+        </property>
+        <property name="guestName" type="java.lang.String">
+            <column name="GUEST_NAME"/>
+        </property>
+      
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="1" />
+        </property>
+       <property name="selectType" type="java.lang.String">
+            <column name="SELECT_TYPE" length="1" />
+        </property>
+        <property name="zhDesc" type="java.lang.String">
+            <column name="ZH_DESC" length="600" />
+        </property>
+        <property name="xinshuiNo" type="java.lang.String">
+            <column name="XINSHUI_NO"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+         <property name="price" type="java.math.BigDecimal">
+            <column name="PRICE"/>
+        </property>
+        
+         <property name="raceName" type="java.lang.String">
+            <column name="RACE_NAME"/>
+        </property>
+        <property name="raceId" type="java.lang.Long">
+            <column name="RACE_ID"/>
+        </property>
+        <property name="pubTime" type="java.util.Date">
+            <column name="PUB_TIME"/>
+        </property>
+      
+        <property name="txUsername" type="java.lang.String">
+            <column name="TX_USERNAME"/>
+        </property>
+        
+        
+        <property name="aindex" type="java.lang.String">
+            <column name="AINDEX"/>
+        </property>
+        <property name="bindex" type="java.lang.String">
+            <column name="BINDEX"/>
+        </property>
+        <property name="panKouIndex" type="java.lang.String">
+            <column name="PAN_KOU_INDEX"/>
+        </property>
+        <property name="confidenceIndex" type="java.lang.String">
+            <column name="CONFIDENT_INDEX"/>
+        </property>
+        <property name="isB2C" type="java.lang.String">
+            <column name="IS_B2C"/>
+        </property>
+        
+        <property name="click" type="java.lang.Long">
+            <column name="CLICK"/>
+        </property>
+       <property name="isRecommend" type="java.lang.Integer">
+            <column name="IS_RECOMEND"/>
+        </property>
+       <property name="raceStartTime" type="java.util.Date">
+            <column name="RACE_START_TIME"/>
+        </property>
+       
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Expert" table="T_EXPERT"  dynamic-insert="true" dynamic-update="true">
+        <comment>B2签约专家补充资料</comment>
+        <id name="expertId" type="java.lang.Long">
+            <column name="EXPERT_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_EXPERT_ID</param>
+            </generator>
+        </id>
+      
+        <property name="introduction" type="java.lang.String">
+            <column name="INTRODUCTION" />
+        </property>
+        <property name="job" type="java.lang.String">
+            <column name="JOB" length="100" />
+        </property>
+        <property name="winRatio" type="java.lang.Double">
+            <column name="WIN_RATIO" precision="4" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="1" />
+        </property>
+        <property name="contractTime" type="java.util.Date">
+            <column name="CONTRACT_TIME" length="7" />
+        </property>
+        <property name="expertName" type="java.lang.String">
+            <column name="EXPERT_NAME" length="300" />
+        </property>
+        <property name="monthPack" type="java.math.BigDecimal">
+            <column name="MONTH_PACK"/>
+        </property>
+        <property name="weekPack" type="java.math.BigDecimal">
+            <column name="WEEK_PACK"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="photo" type="java.lang.String">
+            <column name="PHOTO" length="200" />
+        </property>
+        <property name="expertCode" type="java.lang.String">
+            <column name="EXPERT_CODE" length="50" />
+        </property>
+        <property name="isValuePack" type="java.lang.String">
+            <column name="IS_VALUE_PACK" length="1" />
+        </property>
+          <property name="skilledRace" type="java.lang.String">
+            <column name="SKILLED_RACE"/>
+        </property>
+         <property name="expertClass" type="java.lang.String">
+            <column name="G_CLASS"/>
+        </property>
+       
+    </class>
+</hibernate-mapping>

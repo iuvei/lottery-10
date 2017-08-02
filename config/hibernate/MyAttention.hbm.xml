@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.MyAttention" table="T_MY_ATTENTION"  dynamic-insert="true" dynamic-update="true">
+        <id name="attentionId" type="java.lang.Long">
+            <column name="ATTENTION_ID" precision="20" scale="0" />
+            <generator class="sequence">
+               <param name="sequence">SEQ_MY_ATTENTION_ID</param>
+            </generator>
+        </id>
+        <property name="attentionTime" type="java.util.Date">
+            <column name="ATTENTION_TIME"/>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="20" scale="0" />
+        </property>
+       <property name="targetUserId" type="java.lang.Long">
+            <column name="TARGET_USERID"/>
+        </property>
+      
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME"/>
+        </property>
+        <property name="targetUsername" type="java.lang.String">
+            <column name="TARGET_USERNAME"/>
+        </property>
+    </class>
+</hibernate-mapping>

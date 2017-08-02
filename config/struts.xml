@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<include file="struts/lottery-default.xml"/>
+	
+	<include file="com/wintv/lottery/index/struts-index.xml"/>
+	
+    <include file="com/wintv/lottery/user/struts-user.xml"/> 
+    
+    <include file="com/wintv/lottery/scores/struts-scores.xml"/>
+    
+    <include file="com/wintv/lottery/pay/struts-pay.xml"/>
+    
+    <include file="com/wintv/lottery/area/struts-area.xml"/>
+    
+    <include file="com/wintv/lottery/xinshui/struts-xinshui.xml"/>
+    
+    <include file="com/wintv/lottery/admin/struts-admin.xml"/>
+    
+    <include file="com/wintv/lottery/admin/team/struts-admin-team.xml"/> 
+    
+    <include file="com/wintv/lottery/admin/b2c/struts-admin-b2c.xml"/> 
+    
+    <include file="com/wintv/lottery/bet/struts-bet.xml"/> 
+    
+    <include file="com/wintv/lottery/bet/struts-b2c.xml"/> 
+   
+   	<include file="com/wintv/lottery/mycenter/struts-mycenter.xml"/>
+   	
+   	<include file="com/wintv/lottery/attention/struts-attention.xml"/>
+   	
+   	<include file="com/wintv/lottery/b2c/struts-b2c.xml"/>
+   	
+   	<include file="com/wintv/lottery/personal/struts-personal.xml"/>
+   	
+   	<include file="com/wintv/lottery/wdlose/struts-wdlose.xml"/>
+   	
+   	<include file="com/wintv/lottery/cms/struts-cms.xml"/>
+   	
+</struts>

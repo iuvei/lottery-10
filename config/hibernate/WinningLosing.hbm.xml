@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.WinningLosing" table="T_WINNING_LOSING">
+        <id name="wlId" type="java.lang.Long">
+            <column name="WL_ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_T_WINNING_LOSING_ID</param>
+         </generator>
+        </id>
+        <property name="userid" type="java.lang.Long">
+            <column name="USERID" precision="20" scale="0" />
+        </property>
+        <property name="sponsorUserid" type="java.lang.Long">
+            <column name="SPONSOR_USERID" precision="20" scale="0" />
+        </property>
+        <property name="betMultiple" type="java.lang.Long">
+            <column name="BET_MULTIPLE" precision="10" scale="0" />
+        </property>
+        <property name="divideCopys" type="java.math.BigDecimal">
+            <column name="DIVIDE_COPYS" precision="10" />
+        </property>
+        <property name="recruitUsers" type="java.lang.String">
+            <column name="RECRUIT_USERS" length="500" />
+        </property>
+        <property name="isPrivate" type="java.lang.String">
+            <column name="IS_PRIVATE" length="1" />
+        </property>
+        <property name="isFloor" type="java.lang.String">
+            <column name="IS_FLOOR" length="1" />
+        </property>
+        <property name="subscribeCopys" type="java.lang.Long">
+            <column name="SUBSCRIBE_COPYS" precision="10" scale="0" />
+        </property>
+        <property name="betNum" type="java.lang.Long">
+            <column name="BET_NUM" precision="10" scale="0" />
+        </property>
+        <property name="plan" type="java.lang.String">
+            <column name="PLAN" length="200" />
+        </property>
+        <property name="betDate" type="java.util.Date">
+            <column name="BET_DATE" length="7" />
+        </property>
+        <property name="parentId" type="java.lang.Long">
+            <column name="PARENT_ID" precision="20" scale="0" />
+        </property>
+        <property name="floorCopys" type="java.math.BigDecimal">
+            <column name="FLOOR_COPYS" precision="20" />
+        </property>
+        <property name="autoMoney" type="java.math.BigDecimal">
+            <column name="AUTO_MONEY" precision="20" />
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY" precision="20" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="2" />
+        </property>
+        <property name="planCode" type="java.lang.String">
+            <column name="PLAN_CODE" length="20" />
+        </property>
+        <property name="phase" type="java.lang.String">
+            <column name="PHASE"/>
+        </property>
+    </class>
+</hibernate-mapping>

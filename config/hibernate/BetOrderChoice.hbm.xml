@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.BetOrderChoice" table="T_BET_ORDER_CHOICE">
+        <id name="choiceId" type="java.lang.Long">
+            <column name="CHOICE_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_BET_ORDER_CHOICE_ID</param>
+            </generator>
+        </id>
+        <property name="againstId" type="java.lang.Long">
+            <column name="AGAINST_ID" precision="20" scale="0" />
+        </property>
+        <property name="betOrderId" type="java.lang.Long">
+            <column name="BET_ORDER_ID" precision="20" scale="0" />
+        </property>
+        <property name="betPlan" type="java.lang.String">
+            <column name="BET_PLAN" length="50" />
+        </property>
+        <property name="danCode" type="java.lang.String">
+            <column name="DAN_CODE" length="50" />
+        </property>
+        <property name="changci" type="java.lang.Long">
+            <column name="CHANGCI"/>
+        </property>
+    </class>
+</hibernate-mapping>

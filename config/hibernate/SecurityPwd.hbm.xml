@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.SecurityPwd" table="T_SECURITY_PWD">
+        <id name="securityId" type="java.lang.Long">
+            <column name="SECURITY_ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_SECURITY_PWD_ID</param>
+         </generator>
+        </id>
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="txTime" type="java.util.Date">
+            <column name="TX_TIME" length="7" />
+        </property>
+        <property name="cnt" type="java.lang.Long">
+            <column name="CNT" precision="20" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

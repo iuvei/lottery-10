@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Arena" table="T_ARENA">
+        <comment>擂台赛赛程 指定哪一期是本期 哪一期是下期 在彩票管理表里指定</comment>
+        <id name="arenaId" type="java.lang.Long">
+            <column name="ARENA_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_ARENA_ID</param>
+            </generator>
+        </id>
+        <property name="hostTeam" type="java.lang.String">
+            <column name="HOST_TEAM" length="100" not-null="true">
+                <comment>主队</comment>
+            </column>
+        </property>
+        <property name="guestTeam" type="java.lang.String">
+            <column name="GUEST_TEAM" length="100" not-null="true">
+                <comment>客队</comment>
+            </column>
+        </property>
+        <property name="raceTime" type="java.util.Date">
+            <column name="RACE_TIME" length="7" not-null="true">
+                <comment>开赛时间</comment>
+            </column>
+        </property>
+        <property name="avgIndex" type="java.lang.String">
+            <column name="AVG_INDEX" length="100">
+                <comment>平均指数</comment>
+            </column>
+        </property>
+        <property name="phase" type="java.lang.String">
+            <column name="PHASE" length="10" not-null="true">
+                <comment>第几期</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

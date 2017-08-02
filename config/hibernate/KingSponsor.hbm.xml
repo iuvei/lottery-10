@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.KingSponsor" table="T_KING_SPONSOR" dynamic-insert="true" dynamic-update="true">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="sequence">
+               <param name="sequence">SEQ_SUPER_SPONSOR_ID</param>
+            </generator>
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="100" />
+        </property>
+        <property name="betCategory" type="java.lang.String">
+            <column name="BET_CATEGORY"/>
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="FLG" length="1" />
+        </property>
+        <property name="zhDesc" type="java.lang.String">
+            <column name="ZH_DESC" length="300" />
+        </property>
+        <property name="userid" type="java.lang.Long">
+            <column name="USERID" precision="20" scale="0" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS"/>
+        </property>
+        <property name="gdStatus" type="java.lang.String">
+            <column name="GD_STATUS"/>
+        </property>
+        <property name="dzCnt" type="java.lang.Long">
+            <column name="DZ_CNT"/>
+        </property>
+         <property name="alreadyDzCnt" type="java.lang.Long">
+            <column name="ALREADY_DZ_CNT"/>
+        </property>
+        <property name="planDesc" type="java.lang.String">
+            <column name="PLAN_DESC"/>
+        </property>
+    </class>
+</hibernate-mapping>

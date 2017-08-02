@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Bonus" table="T_BONUS">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_BONUS_ID</param>
+         </generator>
+        </id>
+        <property name="phase" type="java.lang.String">
+            <column name="PHASE" length="20" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="50" />
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="lotteryType" type="java.lang.String">
+            <column name="LOTTERY_TYPE" length="3" />
+        </property>
+        <property name="lotteryName" type="java.lang.String">
+            <column name="LOTTERY_NAME" length="100" />
+        </property>
+        <property name="money" type="java.math.BigDecimal">
+            <column name="MONEY"/>
+        </property>
+        <property name="deadLine" type="java.util.Date">
+            <column name="DEAD_LINE"/>
+        </property>
+    </class>
+</hibernate-mapping>

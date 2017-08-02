@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+<bean id="emailSender" class="com.wintv.framework.utils.mail.Email">
+   <property name="host">
+      <value>smtp.163.com</value>
+   </property>
+   <property name="from">
+     <value>hunan8413@163.com</value>
+   </property>
+   <property name="auth">
+     <value>true</value>
+   </property>
+   <property name="authName">
+     <value>hunan8413@163.com</value>
+   </property>
+   <property name="authPassword">
+     <value>100.200</value>
+   </property>
+   <property name="header"> 
+	  <props> 
+	  	<prop key="Content-Type">text/html; charset=utf-8</prop>
+	  </props> 
+   </property>
+</bean>
+</beans>

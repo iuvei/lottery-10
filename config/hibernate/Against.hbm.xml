@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Against" table="T_AGAINST"  dynamic-insert="true" dynamic-update="true">
+        <id name="againstId" type="java.lang.Long">
+            <column name="AGAINST_ID"/>
+            <generator class="sequence">
+           <param name="sequence">SEQ_AGAINST_ID</param>
+         </generator>
+        </id>
+       <property name="hostName" type="java.lang.String">
+            <column name="HOST_NAME" length="60" />
+        </property>
+        <property name="guestName" type="java.lang.String">
+            <column name="GUEST_NAME" length="60" />
+        </property>
+        <property name="startTime" type="java.util.Date">
+            <column name="START_TIME" length="7" />
+        </property>
+        <property name="raceName" type="java.lang.String">
+            <column name="RACE_NAME" length="100" />
+        </property>
+        <property name="raceSeasonId" type="java.lang.Long">
+            <column name="RACE_SEASON_ID"/>
+        </property>
+        <property name="raceSeasonName" type="java.lang.String">
+            <column name="RACE_SEASON_NAME"/>
+        </property>
+        <property name="rounds" type="java.lang.Long">
+            <column name="ROUNDS"/>
+        </property>
+        <property name="roundName" type="java.lang.String">
+            <column name="ROUNDS_NAME"/>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="asiaPei" type="java.lang.String">
+            <column name="ASIA_PEI" length="60" />
+        </property>
+        <property name="bigSmall" type="java.lang.String">
+            <column name="BIG_SMALL" length="60" />
+        </property>
+        
+        <property name="type" type="java.lang.String">
+            <column name="TYPE"/>
+        </property>
+        <property name="raceId" type="java.lang.Long">
+            <column name="RACE_ID"/>
+        </property>
+        <property name="hostId" type="java.lang.Long">
+            <column name="HOST_ID"/>
+        </property>
+        <property name="guestId" type="java.lang.Long">
+            <column name="GUEST_ID"/>
+        </property>
+        <property name="areaId" type="java.lang.Long">
+            <column name="AREA_ID"/>
+        </property>
+        <property name="countryId" type="java.lang.Long">
+            <column name="COUNTRY_ID"/>
+        </property>
+        
+        <property name="scoreA" type="java.lang.String">
+            <column name="SCOREA"/>
+        </property>
+        <property name="scoreB" type="java.lang.String">
+            <column name="SCOREB"/>
+        </property>
+        <property name="score" type="java.lang.String">
+            <column name="SCORE"/>
+        </property>
+         <property name="raceResult" type="java.lang.String">
+            <column name="RACE_RESULT"/>
+        </property>
+        <property name="concede" type="java.lang.String">
+            <column name="CONCEDE"/>
+        </property>
+        <property name="bgColor" type="java.lang.String">
+            <column name="BG_COLOR"/>
+        </property>
+        <property name="concedeResult" type="java.lang.String">
+            <column name="CONCEDE_RESULT"/>
+        </property>
+    </class>
+</hibernate-mapping>

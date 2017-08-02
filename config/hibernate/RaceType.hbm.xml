@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.RaceType" table="T_RACE_TYPE">
+        <id name="raceId" type="java.lang.Long">
+            <column name="RACE_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_RACING_TYPE_ID</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="50" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE"/>
+        </property>
+    </class>
+</hibernate-mapping>

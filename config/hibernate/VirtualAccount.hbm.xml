@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.VirtualAccount" table="T_VIRTUAL_ACCOUNT" dynamic-insert="true" dynamic-update="true">
+        <comment>用户的金额虚拟账号</comment>
+        <id name="vaId" type="java.lang.Long">
+            <column name="VA_ID"/>
+            <generator class="sequence">
+             <param name="sequence">SEQ_VIRTUAL_ACCOUNT_ID</param>
+            </generator>
+        </id>
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY" precision="20" />
+        </property>
+        <property name="frozenMoney" type="java.math.BigDecimal">
+            <column name="FROZEN_MONEY" precision="20" />
+        </property>
+        <property name="mosaicGold" type="java.math.BigDecimal">
+            <column name="MOSAIC_GOLD" precision="10" />
+        </property>
+        <property name="point" type="java.lang.Long">
+            <column name="POINT" precision="20" scale="0" />
+        </property>
+        <property name="bankCode" type="java.lang.String">
+            <column name="BANK_CODE" length="10" />
+        </property>
+        <property name="cardNum" type="java.lang.String">
+            <column name="CARD_NUM" length="50" />
+        </property>
+        <property name="province" type="java.lang.String">
+            <column name="PROVINCE" length="20" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" length="120" />
+        </property>
+        <property name="frozenMosaicGold" type="java.math.BigDecimal">
+            <column name="FROZEN_MOSAIC_GOLD" precision="10" />
+        </property>
+        <property name="branch" type="java.lang.String">
+            <column name="BRANCH" length="120" />
+        </property>
+        <property name="bankName" type="java.lang.String">
+            <column name="BANK_NAME" length="120" />
+        </property>
+        <property name="userName" type="java.lang.String">
+            <column name="USER_NAME" length="50" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME"/>
+        </property>
+    </class>
+</hibernate-mapping>

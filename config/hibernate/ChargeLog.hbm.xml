@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.ChargeLog" table="T_CHARGE_LOG"  dynamic-insert="true" dynamic-update="true">
+        <comment>充值日志</comment>
+        <id name="chargeId" type="java.lang.Long">
+            <column name="CHARGE_ID" precision="20" scale="0" />
+            <generator class="sequence">
+               <param name="sequence">SEQ_CHARGE_LOG_ID</param>
+            </generator>
+        </id>
+        <property name="fromBank" type="java.lang.String">
+            <column name="FROM_BANK" length="50" not-null="true">
+                <comment>银行或第三方系统</comment>
+            </column>
+        </property>
+         <property name="fromBankCode" type="java.lang.String">
+            <column name="FROM_BANK_CODE" length="50" not-null="true">
+                <comment>银行或第三方系统代码</comment>
+            </column>
+        </property>
+        <property name="money" type="java.math.BigDecimal">
+            <column name="MONEY" precision="20" not-null="true">
+                <comment>金额</comment>
+            </column>
+        </property>
+        <property name="userId" type="java.lang.Long">
+            <column name="USER_ID" precision="20" scale="0" not-null="true">
+                <comment>用户ID</comment>
+            </column>
+        </property>
+        <property name="chargeTime" type="java.util.Date">
+            <column name="CHARGE_TIME" length="7" not-null="true">
+                <comment>日期</comment>
+            </column>
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="1000">
+                <comment>备注</comment>
+            </column>
+        </property>
+        <property name="ip" type="java.lang.String">
+            <column name="IP" length="1000">
+                <comment>充值时IP</comment>
+            </column>
+        </property>
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO" length="1000">
+                <comment>订单号</comment>
+            </column>
+        </property>
+         <property name="status" type="java.lang.String">
+            <column name="STATUS" length="100">
+                <comment>状态</comment>
+            </column>
+        </property>
+        <property name="payWay" type="java.lang.String">
+            <column name="PAY_WAY">
+                <comment>充值方式</comment>
+            </column>
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY">
+                <comment>账户余额</comment>
+            </column>
+        </property>
+        <property name="categoryType" type="java.lang.String">
+            <column name="CATEGORY_TYPE">
+                <comment></comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.PointTransactionLog" table="T_POINT_TRANSACTION_LOG">
+        <comment>积分日志 日志类型 1.注册、2.充值、3.投注、4.合买、5.擂台 具体值应该 读取数据字典</comment>
+        <id name="logId" type="java.lang.Long">
+            <column name="LOG_ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_POINT_TRANSACTION_LOG_ID</param>
+         </generator>
+        </id>
+        <property name="txType" type="java.lang.String">
+            <column name="TX_TYPE" precision="3" scale="0" not-null="true">
+                <comment>日志类型</comment>
+            </column>
+        </property>
+        <property name="txValue" type="java.lang.Integer">
+            <column name="TX_VALUE" precision="5" scale="0" not-null="true">
+                <comment>交易积分数量</comment>
+            </column>
+        </property>
+        <property name="txTime" type="java.util.Date">
+            <column name="TX_TIME" length="7" not-null="true">
+                <comment>交易时间</comment>
+            </column>
+        </property>
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" scale="0" not-null="true">
+                <comment>用户ID</comment>
+            </column>
+        </property>
+        <property name="allPoint" type="java.lang.Long">
+            <column name="ALL_POINT" precision="20">
+                <comment>剩余积分</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

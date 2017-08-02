@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.WithdrawLog" table="T_WITHDRAW_LOG"  dynamic-insert="true" dynamic-update="true">
+        <comment>提现日志 用于记录每次提现的清单 提现流水号就是 前缀+主键 组成 前缀可以是字母TX</comment>
+        <id name="drawId" type="java.lang.Long">
+            <column name="DRAW_ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_WITHDRAW_LOG_ID</param>
+         </generator>
+        </id>
+        <property name="bank" type="java.lang.String">
+            <column name="BANK" length="50">
+                <comment>银行名称</comment>
+            </column>
+        </property>
+        <property name="txMoney" type="java.math.BigDecimal">
+            <column name="TX_MONEY">
+                <comment>金额</comment>
+            </column>
+        </property>
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" scale="0">
+                <comment>用户ID</comment>
+            </column>
+        </property>
+        <property name="drawTime" type="java.util.Date">
+            <column name="DRAW_TIME">
+                <comment>日期</comment>
+            </column>
+        </property>
+        <property name="bankProvince" type="java.lang.String">
+            <column name="BANK_PROVINCE" length="20">
+                <comment>银行所在省份</comment>
+            </column>
+        </property>
+        <property name="bankCity" type="java.lang.String">
+            <column name="BANK_CITY" length="20">
+                <comment>银行所在城市</comment>
+            </column>
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1">
+                <comment>状态</comment>
+            </column>
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="1000">
+                <comment>备注</comment>
+            </column>
+        </property>
+        <property name="fee" type="java.math.BigDecimal">
+            <column name="FEE">
+                <comment>手续费</comment>
+            </column>
+        </property>
+        <property name="bankCode" type="java.lang.String">
+            <column name="BANK_CODE" length="1000">
+                <comment>银行代码</comment>
+            </column>
+        </property>
+       	<property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY"/>
+        </property>
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO">
+                <comment>取款订单号</comment>
+            </column>
+        </property>
+        <property name="withdrawIp" type="java.lang.String">
+            <column name="WITHDRAW_IP">
+                <comment>客服处理时间</comment>
+            </column>
+        </property>
+        <property name="categoryType" type="java.lang.String">
+            <column name="CATEGORY_TYPE">
+                <comment></comment>
+            </column>
+        </property>
+        
+         <property name="branch" type="java.lang.String">
+            <column name="BRANCH">
+                <comment></comment>
+            </column>
+        </property>
+        
+        <property name="cardNum" type="java.lang.String">
+            <column name="CARD_NUM">
+                <comment></comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

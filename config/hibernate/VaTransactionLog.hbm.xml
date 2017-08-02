@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.VaTransactionLog" table="T_VA_TRANSACTION_LOG"  dynamic-insert="true" dynamic-update="true">
+        <comment>虚拟币交易日志 日志类型 1.购买彩票 2 退款 ..........</comment>
+        <id name="vatId" type="java.lang.Long">
+            <column name="VAT_ID" precision="20" scale="0" />
+            <generator class="sequence">
+             <param name="sequence">SEQ_VA_TRANSACTION_LOG_ID</param>
+            </generator>
+        </id>
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" not-null="true">
+                <comment>用户ID</comment>
+            </column>
+        </property>
+        <property name="txMoney" type="java.math.BigDecimal">
+            <column name="TX_MONEY" precision="10" scale="2" not-null="true">
+                <comment>金额</comment>
+            </column>
+        </property>
+        <property name="txDate" type="java.util.Date">
+            <column name="TX_DATE">
+                <comment>交易时间</comment>
+            </column>
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="1000">
+                <comment>备注</comment>
+            </column>
+        </property>
+        <property name="txType" type="java.lang.String">
+            <column name="TX_TYPE">
+                <comment>日志类型</comment>
+            </column>
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY">
+                <comment>总余额</comment>
+            </column>
+        </property>
+        <property name="mosaicGoldAllMoney" type="java.math.BigDecimal">
+            <column name="MOSAIC_GOLDMONEY">
+                <comment>彩金总余额</comment>
+            </column>
+        </property>
+        <property name="txMosaicGold" type="java.math.BigDecimal">
+            <column name="TX_MOSAIC_GOLDMONEY">
+                <comment>交易彩金</comment>
+            </column>
+        </property>
+        <property name="orderId" type="java.lang.Long">
+            <column name="ORDER_ID">
+                <comment>关联的表对应的ID(投注表   心水购买表)</comment>
+            </column>
+        </property>
+         <property name="categoryType" type="java.lang.String">
+            <column name="CATEGORY_TYPE">
+                <comment></comment>
+            </column>
+        </property>
+        <property name="flg" type="java.lang.String">
+            <column name="FLG">
+                <comment>'1':进账  '2':出账</comment>
+            </column>
+        </property>
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO">
+                <comment>订单号</comment>
+            </column>
+        </property>
+        <property name="txTypeName" type="java.lang.String">
+            <column name="TX_TYPE_NAME">
+                <comment>交易类型中文名称</comment>
+            </column>
+        </property>
+        <property name="targetUserId" type="java.lang.Long">
+            <column name="TARGET_USERID">
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

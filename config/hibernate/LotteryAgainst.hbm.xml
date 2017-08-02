@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.LotteryAgainst" table="T_LOTTERY_AGAINST">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="20" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_LOTTERY_AGAINST_ID</param>
+         </generator>
+        </id>
+        <property name="againstId" type="java.lang.Long">
+            <column name="AGAINST_ID" precision="20" scale="0" />
+        </property>
+        <property name="phaseId" type="java.lang.Long">
+            <column name="PHASE_ID" precision="20" scale="0" />
+        </property>
+        <property name="resultNo" type="java.lang.String">
+            <column name="RESULT_NO"/>
+        </property>
+        <property name="changci" type="java.lang.Long">
+            <column name="CHANGCI" precision="20" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

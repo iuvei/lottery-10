@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Bank" table="T_BANK">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="5" scale="0" />
+            <generator class="sequence">
+           <param name="sequence">SEQ_BANK_ID</param>
+         </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="60" />
+        </property>
+        <property name="img" type="java.lang.String">
+            <column name="IMG" length="100" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" length="100" />
+        </property>
+        <property name="chargeStatus" type="java.lang.String">
+            <column name="CHARGE_STATUS" length="1" />
+        </property>
+        <property name="code" type="java.lang.String">
+            <column name="CODE" length="16" not-null="true" />
+        </property>
+        <property name="withdrawStatus" type="java.lang.String">
+            <column name="WITHDRAW_STATUS" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

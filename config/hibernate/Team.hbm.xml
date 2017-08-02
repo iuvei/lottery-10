@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.Team" table="T_TEAM">
+        <comment>足球球队的基本信息：国家、城市、成立时间、主场、老板、网址</comment>
+        <id name="id" type="java.lang.Long">
+            <column name="ID" precision="10" scale="0" />
+            <generator class="sequence">
+             <param name="sequence">SEQ_TEAM_ID</param>
+            </generator>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="50" not-null="true">
+                <comment>球队名称</comment>
+            </column>
+        </property>
+        <property name="district" type="java.lang.String">
+            <column name="DISTRICT">
+                <comment>区域</comment>
+            </column>
+        </property>
+        <property name="districtId" type="java.lang.Long">
+            <column name="DISTRICT_ID">
+                <comment>区域ID</comment>
+            </column>
+        </property>
+        <property name="country" type="java.lang.String">
+            <column name="COUNTRY">
+                <comment>国家</comment>
+            </column>
+        </property>
+        <property name="countryId" type="java.lang.Long">
+            <column name="COUNTRY_ID">
+                <comment>国家ID</comment>
+            </column>
+        </property>
+        <property name="foundDate" type="java.util.Date">
+            <column name="FOUND_DATE" length="7">
+                <comment>成立时间</comment>
+            </column>
+        </property>
+        <property name="mainScene" type="java.lang.String">
+            <column name="MAIN_SCENE" length="30">
+                <comment>主场</comment>
+            </column>
+        </property>
+        <property name="boss" type="java.lang.String">
+            <column name="BOSS" length="30">
+                <comment>老板</comment>
+            </column>
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="CITY" length="100">
+                <comment>所在城市</comment>
+            </column>
+        </property>
+        <property name="webSite" type="java.lang.String">
+            <column name="WEB_SITE" length="300">
+                <comment>官方网站</comment>
+            </column>
+        </property>
+        <property name="contactAddr" type="java.lang.String">
+            <column name="CONTACT_ADDR" length="300">
+                <comment>联系地址</comment>
+            </column>
+        </property>
+        <property name="stadium" type="java.lang.String">
+            <column name="STADIUM" length="300">
+                <comment>球场</comment>
+            </column>
+        </property>
+        <property name="stadiumVolume" type="java.math.BigDecimal">
+            <column name="STADIUM_VOLUME" precision="20">
+                <comment>球场容量</comment>
+            </column>
+        </property>
+        
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" length="1">
+                <comment>类型</comment>
+            </column>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL">
+            </column>
+        </property>
+         <property name="fullName" type="java.lang.String">
+            <column name="FULL_NAME">
+               
+            </column>
+        </property>
+        
+        
+        <property name="introduction" type="java.lang.String">
+            <column name="INTRODUCTION">
+            </column>
+        </property>
+        <property name="honor" type="java.lang.String">
+            <column name="HONOR">
+            </column>
+        </property>
+        <property name="specialty" type="java.lang.String">
+            <column name="SPECIALTY">
+            </column>
+        </property>
+        
+        <property name="win" type="java.lang.Long">
+            <column name="WIN">
+            </column>
+        </property>
+        <property name="ping" type="java.lang.Long">
+            <column name="PING">
+            </column>
+        </property>
+        <property name="losing" type="java.lang.Long">
+            <column name="LOSING">
+            </column>
+        </property>
+        
+         <property name="changci" type="java.lang.Long">
+            <column name="CHANGCI">
+            </column>
+        </property>
+        <property name="goal" type="java.lang.Long">
+            <column name="GOAL">
+            </column>
+        </property>
+         <property name="point" type="java.lang.Long">
+            <column name="POINT">
+            </column>
+        </property>
+        
+        <property name="img" type="java.lang.String">
+            <column name="IMG">
+            </column>
+        </property>
+        
+    </class>
+</hibernate-mapping>

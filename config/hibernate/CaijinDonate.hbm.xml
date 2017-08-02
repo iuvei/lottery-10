@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.CaijinDonate" table="T_CAIJIN_DONATE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID"/>
+            <generator class="sequence">
+                <param name="sequence">SEQ_CAIJIN_DONATE_ID</param>
+            </generator>
+        </id>
+        <property name="applyTime" type="java.util.Date">
+            <column name="APPLY_TIME" length="7" />
+        </property>
+        <property name="applyUserId" type="java.lang.Long">
+            <column name="APPLY_USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="reason" type="java.lang.String">
+            <column name="REASON" length="100" />
+        </property>
+        <property name="money" type="java.math.BigDecimal">
+            <column name="MONEY"/>
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY"/>
+        </property>
+        <property name="auditUserId" type="java.lang.Long">
+            <column name="AUDIT_USER_ID" precision="20" scale="0" />
+        </property>
+        <property name="auditTime" type="java.util.Date">
+            <column name="AUDIT_TIME" length="7" />
+        </property>
+        <property name="status" type="java.lang.String">
+            <column name="STATUS" length="1" />
+        </property>
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO" length="50" />
+        </property>
+     
+        <property name="applyUser" type="java.lang.String">
+            <column name="APPLY_USER" length="100" />
+        </property>
+        <property name="auditUser" type="java.lang.String">
+            <column name="AUDIT_USER" length="100" />
+        </property>
+        <property name="donateNum" type="java.lang.Long">
+            <column name="DONATE_NUM" precision="20" scale="0" />
+        </property>
+         <property name="concreteReason" type="java.lang.String">
+            <column name="CONCRETE_REASON"/>
+        </property>
+        <property name="auditReason" type="java.lang.String">
+            <column name="AUDIT_REASON"/>
+        </property>
+        <property name="deptCode" type="java.lang.String">
+            <column name="DEPT_CODE"/>
+        </property>
+        <property name="categoryType" type="java.lang.String">
+            <column name="CATEGORY_TYPE">
+                <comment></comment>
+            </column>
+        </property>
+        <property name="userList" type="java.lang.String">
+            <column name="USER_LIST">
+                <comment></comment>
+            </column>
+        </property>
+        <property name="deptName" type="java.lang.String">
+            <column name="DEPT_NAME">
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

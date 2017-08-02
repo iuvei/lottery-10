@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.VaFrozenLog" table="T_VA_FROZEN_LOG" dynamic-insert="true" dynamic-update="true">
+        <id name="frozenId" type="java.lang.Long">
+            <column name="FROZEN_ID" precision="20" scale="0" />
+             <generator class="sequence">
+           <param name="sequence">SEQ_VA_FROZEN_LOG_ID</param>
+         </generator>
+        </id>
+        <property name="txUserId" type="java.lang.Long">
+            <column name="TX_USER_ID" precision="20" scale="0" not-null="true" />
+        </property>
+        <property name="frozenMoney" type="java.math.BigDecimal">
+            <column name="FROZEN_MONEY"/>
+        </property>
+        <property name="frozenDate" type="java.util.Date">
+            <column name="FROZEN_DATE"/>
+        </property>
+        <property name="memo" type="java.lang.String">
+            <column name="MEMO" length="1000" />
+        </property>
+        <property name="txType" type="java.lang.String">
+            <column name="TX_TYPE"/>
+        </property>
+        <property name="allMoney" type="java.math.BigDecimal">
+            <column name="ALL_MONEY"/>
+        </property>
+        <property name="mosaicGoldmoney" type="java.math.BigDecimal">
+            <column name="MOSAIC_GOLDMONEY" precision="20" />
+        </property>
+        <property name="frozenMosaicGoldmoney" type="java.math.BigDecimal">
+            <column name="FROZEN_MOSAIC_GOLDMONEY" precision="20" />
+        </property>
+        <property name="orderId" type="java.lang.Long">
+            <column name="ORDER_ID" precision="20" scale="0" />
+        </property>
+        <property name="categoryType" type="java.lang.String">
+            <column name="CATEGORY_TYPE"/>
+        </property>
+       
+        <property name="orderNo" type="java.lang.String">
+            <column name="ORDER_NO"/>
+        </property>
+        
+        <property name="flg" type="java.lang.String">
+            <column name="FLG"/>
+        </property>
+    </class>
+</hibernate-mapping>

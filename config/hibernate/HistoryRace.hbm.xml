@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.HistoryRace" table="T_HISTORY_RACE">
+        <comment>球队以往比赛 盘路(ROAD_BED) 1:赢 2:走 3:输 大小球(BIG_OR_SMALL_BALL) 1:小 2:大</comment>
+        <id name="hrId" type="java.lang.Long">
+            <column name="HR_ID" precision="20" scale="0" />
+            <generator class="sequence">
+              <param name="sequence">SEQ_HISTORY_RACE_ID</param>
+            </generator>
+        </id>
+        <property name="raceType" type="java.lang.String">
+            <column name="TX_TYPE" precision="3" scale="0" not-null="true">
+                <comment>'1' :联赛    '2':杯赛     '3':其他</comment>
+            </column>
+        </property>
+        <property name="startTime" type="java.util.Date">
+            <column name="startTime" length="7" not-null="true">
+                <comment>比赛时间</comment>
+            </column>
+        </property>
+        <property name="hostTeam" type="java.lang.Long">
+            <column name="HOST_TEAM">
+                <comment>主队</comment>
+            </column>
+        </property>
+        <property name="guestTeam" type="java.lang.Long">
+            <column name="GUEST_TEAM">
+                <comment>客队</comment>
+            </column>
+        </property>
+        <property name="point" type="java.lang.Long">
+            <column name="POINT" precision="20" scale="0" not-null="true">
+                <comment>积分</comment>
+            </column>
+        </property>
+        <property name="halfScore" type="java.lang.String">
+            <column name="HALF_SCORE" length="20">
+                <comment>半场比分</comment>
+            </column>
+        </property>
+        <property name="concedePoint" type="java.lang.String">
+            <column name="CONCEDE_POINT" length="100">
+                <comment>让球</comment>
+            </column>
+        </property>
+        <property name="roadBed" type="java.lang.String">
+            <column name="ROAD_BED" length="1">
+                <comment>盘路</comment>
+            </column>
+        </property>
+        <property name="bigOrSmallBall" type="java.lang.String">
+            <column name="BIG_OR_SMALL_BALL" length="1">
+                <comment>大小球</comment>
+            </column>
+        </property>
+        
+        <property name="raceName" type="java.lang.String">
+            <column name="RACE_NAME" length="1">
+                <comment>比赛名称</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

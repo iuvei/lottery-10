@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wintv.framework.pojo.ArenaResult" table="T_ARENA_RESULT">
+        <comment>擂台赛投注结果</comment>
+        <id name="arId" type="java.lang.Long">
+            <column name="AR_ID" precision="20" scale="0" />
+            <generator class="sequence">
+               <param name="sequence">SEQ_ARENA_RESULT_ID</param>
+            </generator>
+        </id>
+        <property name="betUserid" type="java.lang.Long">
+            <column name="BET_USERID" precision="20" scale="0">
+                <comment>投注人用户ID</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
