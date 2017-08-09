@@ -1,0 +1,45 @@
+-- Create table
+create table T_SECURITY_PWD
+(
+  SECURITY_ID NUMBER(20) not null,
+  USER_ID     NUMBER(20),
+  TX_TIME     DATE,
+  CNT         NUMBER(20) not null
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_SECURITY_PWD
+  is '记录密码错误次数';
+-- Add comments to the columns 
+comment on column T_SECURITY_PWD.SECURITY_ID
+  is '主键';
+comment on column T_SECURITY_PWD.USER_ID
+  is '账户ID';
+comment on column T_SECURITY_PWD.TX_TIME
+  is '操作时间';
+comment on column T_SECURITY_PWD.CNT
+  is '错误次数';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_SECURITY_PWD
+  add constraint SECURITY_PWD_PK primary key (SECURITY_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

@@ -1,0 +1,51 @@
+-- Create table
+create table T_XINSHUI_AGAINST
+(
+  ID             NUMBER(10) not null,
+  DEADLINE       DATE,
+  AGAINST_ID     NUMBER(20),
+  PHASE          VARCHAR2(10),
+  XINSHUI_RESULT VARCHAR2(5),
+  PUB_STATUS     CHAR(1) default '1'
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_XINSHUI_AGAINST
+  is '心水对阵表-----后台客服通过筛选出热点赛事,提供给民间高手发布心水的赛程表';
+-- Add comments to the columns 
+comment on column T_XINSHUI_AGAINST.ID
+  is '主键';
+comment on column T_XINSHUI_AGAINST.DEADLINE
+  is '心水发布截至时间';
+comment on column T_XINSHUI_AGAINST.AGAINST_ID
+  is '关联到总的对阵表 关联到 T_AGAINST';
+comment on column T_XINSHUI_AGAINST.PHASE
+  is '心水期次';
+comment on column T_XINSHUI_AGAINST.XINSHUI_RESULT
+  is '心水赛果';
+comment on column T_XINSHUI_AGAINST.PUB_STATUS
+  is '发布状态:   ''1'':正常     ''3'':已取消';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_XINSHUI_AGAINST
+  add constraint XS_PK_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

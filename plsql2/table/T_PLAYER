@@ -1,0 +1,48 @@
+-- Create table
+create table T_PLAYER
+(
+  PLAYER_ID  NUMBER(20) not null,
+  NAME       VARCHAR2(100),
+  AGE        NUMBER(3),
+  HEIGHT     NUMBER(4),
+  COUNTRY_ID NUMBER(8)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_PLAYER
+  is '球员信息';
+-- Add comments to the columns 
+comment on column T_PLAYER.PLAYER_ID
+  is '球员表主键';
+comment on column T_PLAYER.NAME
+  is '姓名';
+comment on column T_PLAYER.AGE
+  is '年龄';
+comment on column T_PLAYER.HEIGHT
+  is '身高';
+comment on column T_PLAYER.COUNTRY_ID
+  is '国籍  关联T_COUNTRY表的主键';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_PLAYER
+  add constraint PLAYER_PK_ID primary key (PLAYER_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

@@ -1,0 +1,31 @@
+-- Create table
+create table T_MY_AUTO_ORD_CATEGORY
+(
+  ID           NUMBER(20),
+  AUTO_OR_ID   NUMBER(20),
+  BET_CATEGORY VARCHAR2(2),
+  STATUS       NUMBER(5) default 1
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_MY_AUTO_ORD_CATEGORY
+  is '自动跟单的玩法';
+-- Add comments to the columns 
+comment on column T_MY_AUTO_ORD_CATEGORY.ID
+  is '主键';
+comment on column T_MY_AUTO_ORD_CATEGORY.AUTO_OR_ID
+  is '自动跟单ID';
+comment on column T_MY_AUTO_ORD_CATEGORY.BET_CATEGORY
+  is '金牌发起人的玩法 投注彩种    1: 胜负14场      2:任9场  3:4场进球  5:6 场半全场     61:单场半全场  62:单场比分 63:单场让球胜平负  64:单场上下单双 65:单场总进球';
+comment on column T_MY_AUTO_ORD_CATEGORY.STATUS
+  is '1:正常定制   0 已经取消';

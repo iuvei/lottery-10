@@ -1,0 +1,50 @@
+-- Create table
+create table T_DICTIONARY
+(
+  DIC_ID  NUMBER(10) not null,
+  CODE    VARCHAR2(30),
+  VALUE   VARCHAR2(550),
+  ZH_DESC VARCHAR2(500),
+  TYPE    VARCHAR2(100)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_DICTIONARY
+  is '数据字典 主要用于保存一些系统的配置信息  因为这些信息可能以后会根据网站运营情况需要做适当修改  若写死在程序里  则需要重写部署程序 太麻烦
+所以如需要修改只要修改后台的维护界面即可
+
+1 B2C价格的指定  在此处设置';
+-- Add comments to the columns 
+comment on column T_DICTIONARY.DIC_ID
+  is '数据字典主键';
+comment on column T_DICTIONARY.CODE
+  is '代码';
+comment on column T_DICTIONARY.VALUE
+  is '值';
+comment on column T_DICTIONARY.ZH_DESC
+  is '中文描述';
+comment on column T_DICTIONARY.TYPE
+  is '类型';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_DICTIONARY
+  add constraint DIC_PK_ID primary key (DIC_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

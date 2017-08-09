@@ -1,0 +1,48 @@
+-- Create table
+create table T_KING_SPONSOR_CATEGORY
+(
+  ID           NUMBER(20) not null,
+  BET_CATEGORY VARCHAR2(2),
+  KING_ID      NUMBER(20),
+  STATUS       CHAR(1) default '0',
+  TYPE         CHAR(1)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_KING_SPONSOR_CATEGORY
+  is '金牌发起人选择的彩种';
+-- Add comments to the columns 
+comment on column T_KING_SPONSOR_CATEGORY.ID
+  is '主键';
+comment on column T_KING_SPONSOR_CATEGORY.BET_CATEGORY
+  is '彩种    1: 胜负14场      2:任9场  3:4场进球  4:4半全场  5:6 场半全场     61:单场半全场  62:单场比分 63:单场胜平负  64:单场上下单双 65:单场总进球';
+comment on column T_KING_SPONSOR_CATEGORY.KING_ID
+  is '金牌发起人主键';
+comment on column T_KING_SPONSOR_CATEGORY.STATUS
+  is '彩种审核状态  ''0'':未审核  ''1'':审核通过     ''2'':审核未通过';
+comment on column T_KING_SPONSOR_CATEGORY.TYPE
+  is '玩法  ''1'':单式合买  ''2'':复式合买  ''3'':单复式合买';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_KING_SPONSOR_CATEGORY
+  add constraint KING_SP_CATE_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

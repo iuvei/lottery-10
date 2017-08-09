@@ -1,0 +1,45 @@
+-- Create table
+create table T_USER_DONATE
+(
+  UD_ID      NUMBER(20) not null,
+  DONATE_ID  NUMBER(20),
+  USER_ID    NUMBER(20),
+  ALL_CAIJIN NUMBER(20,2)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_USER_DONATE
+  is '用户-彩金赠送 中间表';
+-- Add comments to the columns 
+comment on column T_USER_DONATE.UD_ID
+  is '主键';
+comment on column T_USER_DONATE.DONATE_ID
+  is '赠送表ID';
+comment on column T_USER_DONATE.USER_ID
+  is '被赠送人用户ID';
+comment on column T_USER_DONATE.ALL_CAIJIN
+  is '余额';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_USER_DONATE
+  add constraint UD_PK_ID primary key (UD_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

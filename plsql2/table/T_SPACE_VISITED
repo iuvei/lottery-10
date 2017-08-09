@@ -1,0 +1,45 @@
+-- Create table
+create table T_SPACE_VISITED
+(
+  ID           NUMBER(20) not null,
+  USER_ID      NUMBER(20) not null,
+  SPACE_USERID NUMBER(20) not null,
+  VISIT_TIME   DATE default sysdate not null
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_SPACE_VISITED
+  is '个人中心访客';
+-- Add comments to the columns 
+comment on column T_SPACE_VISITED.ID
+  is '主键';
+comment on column T_SPACE_VISITED.USER_ID
+  is '访客用户ID';
+comment on column T_SPACE_VISITED.SPACE_USERID
+  is '个人中心用户名';
+comment on column T_SPACE_VISITED.VISIT_TIME
+  is '访问日期';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_SPACE_VISITED
+  add constraint SPACE_VISTED_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

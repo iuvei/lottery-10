@@ -1,0 +1,42 @@
+-- Create table
+create table T_RACE_TYPE
+(
+  RACE_ID NUMBER(20) not null,
+  NAME    VARCHAR2(50),
+  TYPE    CHAR(1)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_RACE_TYPE
+  is '赛事类型';
+-- Add comments to the columns 
+comment on column T_RACE_TYPE.RACE_ID
+  is '主键';
+comment on column T_RACE_TYPE.NAME
+  is '赛事名称';
+comment on column T_RACE_TYPE.TYPE
+  is '''1'':联赛   ''2'':杯赛 ''3'':其他';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_RACE_TYPE
+  add constraint PK_RACE_TYPE primary key (RACE_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

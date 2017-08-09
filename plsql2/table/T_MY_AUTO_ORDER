@@ -1,0 +1,75 @@
+-- Create table
+create table T_MY_AUTO_ORDER
+(
+  AUTO_ORDER_ID NUMBER(20) not null,
+  KING_ID       NUMBER(20) not null,
+  USERID        NUMBER(20) not null,
+  ORDER_TIME    DATE default sysdate not null,
+  MIN_MONEY     NUMBER(20,2),
+  MAX_MONEY     NUMBER(20,2),
+  TX_MONEY      NUMBER(20,2) not null,
+  USERNAME      VARCHAR2(300) not null,
+  TYPE          CHAR(1) not null,
+  STATUS        CHAR(1) default '1' not null,
+  ORDER_NUM     NUMBER(10),
+  IS_LACK_ORDER CHAR(1),
+  KING_USERID   NUMBER(20),
+  CATEGORY      VARCHAR2(100)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_MY_AUTO_ORDER
+  is '彩票自动跟单定制';
+-- Add comments to the columns 
+comment on column T_MY_AUTO_ORDER.AUTO_ORDER_ID
+  is '主键';
+comment on column T_MY_AUTO_ORDER.KING_ID
+  is '关联T_KING_SPONSOR的主键';
+comment on column T_MY_AUTO_ORDER.USERID
+  is '自动跟单定制人用户ID';
+comment on column T_MY_AUTO_ORDER.ORDER_TIME
+  is '定制时间';
+comment on column T_MY_AUTO_ORDER.MIN_MONEY
+  is '我跟单的金额最小值';
+comment on column T_MY_AUTO_ORDER.MAX_MONEY
+  is '我跟单的金额最大值';
+comment on column T_MY_AUTO_ORDER.TX_MONEY
+  is '每次跟单认购金额';
+comment on column T_MY_AUTO_ORDER.USERNAME
+  is '定制人用户名';
+comment on column T_MY_AUTO_ORDER.TYPE
+  is '投注方式  ''1'':单式  ''2'':复式';
+comment on column T_MY_AUTO_ORDER.STATUS
+  is '定制状态  1:正常    2:  取消';
+comment on column T_MY_AUTO_ORDER.ORDER_NUM
+  is '定制人序号(金牌发起人发起合买后，按照定制人序号依次自动跟单购买)';
+comment on column T_MY_AUTO_ORDER.IS_LACK_ORDER
+  is '认购金额不足是否认购';
+comment on column T_MY_AUTO_ORDER.KING_USERID
+  is '金牌发起人用户ID';
+comment on column T_MY_AUTO_ORDER.CATEGORY
+  is '用逗号隔开';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_MY_AUTO_ORDER
+  add constraint MY_AUTO_ORDER_ID primary key (AUTO_ORDER_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

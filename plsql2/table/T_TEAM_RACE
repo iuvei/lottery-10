@@ -1,0 +1,67 @@
+-- Create table
+create table T_TEAM_RACE
+(
+  ID               NUMBER(20) not null,
+  TEAM_ID          NUMBER(20),
+  RACE_ID          NUMBER(20),
+  RACE_TIME        DATE,
+  RACE_SEASON_ID   NUMBER(20),
+  RACE_SEASON_NAME VARCHAR2(60),
+  COUNTRY_ID       NUMBER(20),
+  COUNTRY_NAME     VARCHAR2(60),
+  AREA_ID          NUMBER(20),
+  AREA_NAME        VARCHAR2(60),
+  TYPE             CHAR(1),
+  TEAM_NAME        VARCHAR2(100)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_TEAM_RACE
+  is '球队与赛事中间表(联赛  杯赛等)';
+-- Add comments to the columns 
+comment on column T_TEAM_RACE.TEAM_ID
+  is '球队主键';
+comment on column T_TEAM_RACE.RACE_ID
+  is '赛事主键(包括联赛  杯赛 等)';
+comment on column T_TEAM_RACE.RACE_TIME
+  is '开赛时间';
+comment on column T_TEAM_RACE.RACE_SEASON_ID
+  is '赛季ID';
+comment on column T_TEAM_RACE.RACE_SEASON_NAME
+  is '赛季名称';
+comment on column T_TEAM_RACE.COUNTRY_ID
+  is '国家ID';
+comment on column T_TEAM_RACE.COUNTRY_NAME
+  is '国家名称';
+comment on column T_TEAM_RACE.AREA_ID
+  is '区域ID';
+comment on column T_TEAM_RACE.AREA_NAME
+  is '区域名称';
+comment on column T_TEAM_RACE.TYPE
+  is '类型: ''1'':联赛  ''2'':杯赛';
+comment on column T_TEAM_RACE.TEAM_NAME
+  is '球队名称';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_TEAM_RACE
+  add constraint TR_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

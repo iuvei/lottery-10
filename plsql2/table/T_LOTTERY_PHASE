@@ -1,0 +1,81 @@
+-- Create table
+create table T_LOTTERY_PHASE
+(
+  ID            NUMBER(20) not null,
+  SOLD_TIME     DATE not null,
+  PHASE_NO      VARCHAR2(16) not null,
+  MUL_DEADLINE  DATE,
+  S_DEADLINE    DATE,
+  TKP_DEADLINE  DATE not null,
+  CATEGORY      CHAR(1) not null,
+  STATUS        CHAR(1) default '1',
+  VICI_DEADLINE NUMBER(6),
+  COMBO_VICI    NUMBER(6),
+  USERNAME      VARCHAR2(50),
+  ADD_TIME      DATE,
+  ISCURRENT     CHAR(1),
+  KJ_NO         VARCHAR2(120),
+  KJ_TIME       DATE,
+  KJ_STATUS     NUMBER(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_LOTTERY_PHASE
+  is '彩票期次';
+-- Add comments to the columns 
+comment on column T_LOTTERY_PHASE.ID
+  is '主键';
+comment on column T_LOTTERY_PHASE.SOLD_TIME
+  is '开售时间';
+comment on column T_LOTTERY_PHASE.PHASE_NO
+  is '期次';
+comment on column T_LOTTERY_PHASE.MUL_DEADLINE
+  is '复式截止时间   （控制前台接受用户投注）  后台是否过期以打票时间为基准';
+comment on column T_LOTTERY_PHASE.S_DEADLINE
+  is '单式截止时间  （控制前台接受用户投注）  后台是否过期以打票时间为基准';
+comment on column T_LOTTERY_PHASE.TKP_DEADLINE
+  is '打票截至时间';
+comment on column T_LOTTERY_PHASE.CATEGORY
+  is '期次分类  ''6'':胜负彩期次    ''9'':进球彩期次 ''8'':半全场期次 ''1'':北京单场期次';
+comment on column T_LOTTERY_PHASE.STATUS
+  is '期次状态  ''1'':期次未审核、''2'':对阵未审核、''3'':赛果未审核、''4'':已公
+布、''5'':已停止、''6'':已作废、''7'':已到期、''8'':已完成';
+comment on column T_LOTTERY_PHASE.VICI_DEADLINE
+  is '普通过关截止时间(只针对北京单场)';
+comment on column T_LOTTERY_PHASE.COMBO_VICI
+  is '组合与自由过关(只针对北京单场)';
+comment on column T_LOTTERY_PHASE.USERNAME
+  is '期次添加人';
+comment on column T_LOTTERY_PHASE.ADD_TIME
+  is '添加时间';
+comment on column T_LOTTERY_PHASE.ISCURRENT
+  is '''1'':当前期次  而且要求 打票时间>当前时间(或者STATUS=''4''  and    打票时间>当前时间  且 预售时间<当前时间)  ';
+comment on column T_LOTTERY_PHASE.KJ_NO
+  is '开奖号码';
+comment on column T_LOTTERY_PHASE.KJ_TIME
+  is '开奖日期';
+comment on column T_LOTTERY_PHASE.KJ_STATUS
+  is '1:已经开奖  2  开奖 号码已经确认  3  尚未开奖';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_LOTTERY_PHASE
+  add constraint LOTTERY_SCHEDULE_PK primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

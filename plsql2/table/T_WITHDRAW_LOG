@@ -1,0 +1,79 @@
+-- Create table
+create table T_WITHDRAW_LOG
+(
+  DRAW_ID       NUMBER(20) not null,
+  BANK          VARCHAR2(150),
+  TX_MONEY      NUMBER(10,2),
+  TX_USER_ID    NUMBER(20),
+  DRAW_TIME     DATE,
+  BANK_PROVINCE VARCHAR2(20),
+  BANK_CITY     VARCHAR2(20),
+  STATUS        CHAR(1),
+  MEMO          VARCHAR2(1000),
+  FEE           NUMBER(5,2),
+  BANK_CODE     VARCHAR2(50),
+  ORDER_NO      VARCHAR2(50),
+  WITHDRAW_IP   VARCHAR2(16),
+  CATEGORY_TYPE VARCHAR2(10) default '13',
+  ALL_MONEY     NUMBER(20,2),
+  CARD_NUM      VARCHAR2(30),
+  BRANCH        VARCHAR2(90)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_WITHDRAW_LOG
+  is '取款日志  用于记录每次提现的清单   提现流水号就是  前缀+主键  组成 前缀可以是字母TX  ';
+-- Add comments to the columns 
+comment on column T_WITHDRAW_LOG.DRAW_ID
+  is '主键';
+comment on column T_WITHDRAW_LOG.BANK
+  is '银行名称';
+comment on column T_WITHDRAW_LOG.TX_MONEY
+  is '金额';
+comment on column T_WITHDRAW_LOG.TX_USER_ID
+  is '用户ID';
+comment on column T_WITHDRAW_LOG.DRAW_TIME
+  is '取款日期';
+comment on column T_WITHDRAW_LOG.BANK_PROVINCE
+  is '银行所在省份';
+comment on column T_WITHDRAW_LOG.BANK_CITY
+  is '银行所在城市';
+comment on column T_WITHDRAW_LOG.STATUS
+  is '状态     1:未受理、2:已受理、3:已转账';
+comment on column T_WITHDRAW_LOG.MEMO
+  is '备用字段';
+comment on column T_WITHDRAW_LOG.FEE
+  is '手续费';
+comment on column T_WITHDRAW_LOG.BANK_CODE
+  is '银行代码';
+comment on column T_WITHDRAW_LOG.ORDER_NO
+  is '取款订单号';
+comment on column T_WITHDRAW_LOG.WITHDRAW_IP
+  is '取款IP';
+comment on column T_WITHDRAW_LOG.CARD_NUM
+  is '银行账户';
+comment on column T_WITHDRAW_LOG.BRANCH
+  is '支行';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_WITHDRAW_LOG
+  add constraint DRAW_PK_ID primary key (DRAW_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

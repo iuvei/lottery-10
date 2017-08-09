@@ -1,0 +1,143 @@
+-- Create table
+create table T_USER
+(
+  USERID           NUMBER(20) not null,
+  USERNAME         VARCHAR2(50) not null,
+  EMAIL            VARCHAR2(50) not null,
+  LOGIN_PASSWORD   VARCHAR2(32) not null,
+  USER_GRADE       CHAR(1) default '1' not null,
+  WITHDRAW_PWD     VARCHAR2(32),
+  NAME             VARCHAR2(50),
+  PASSWORD_TIP     CHAR(1),
+  PASSWORD_ANSWER  VARCHAR2(150),
+  MP               VARCHAR2(11),
+  XINSHUI_MILITARY NUMBER(10) default 0,
+  STATUS           CHAR(1) default '1',
+  IDCARD           VARCHAR2(30),
+  SEX              CHAR(1) default '1',
+  TEL              VARCHAR2(20),
+  PROVINCE         VARCHAR2(50),
+  CITY             VARCHAR2(100),
+  REG_IP           VARCHAR2(16),
+  LOGIN_CNT        NUMBER(20),
+  QQ               VARCHAR2(20),
+  TITLE            VARCHAR2(50),
+  REG_TIME         DATE,
+  IS_EMAIL_BIND    CHAR(1),
+  BIRTHDAY         DATE,
+  IS_ONLINE        CHAR(1),
+  IS_COMPLETE_INFO CHAR(1),
+  BET_MILITARY     NUMBER(10) default 0,
+  ATTENTION_CNT    NUMBER(20) default 0
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_USER
+  is '网站的用户会员信息';
+-- Add comments to the columns 
+comment on column T_USER.USERID
+  is '用户ID';
+comment on column T_USER.USERNAME
+  is '用户名';
+comment on column T_USER.EMAIL
+  is '邮件';
+comment on column T_USER.LOGIN_PASSWORD
+  is '登录密码';
+comment on column T_USER.USER_GRADE
+  is '用户等级';
+comment on column T_USER.WITHDRAW_PWD
+  is '取款密码';
+comment on column T_USER.NAME
+  is '用户真实姓名';
+comment on column T_USER.PASSWORD_TIP
+  is '密码提示';
+comment on column T_USER.PASSWORD_ANSWER
+  is '密码答案';
+comment on column T_USER.MP
+  is '手机号码';
+comment on column T_USER.XINSHUI_MILITARY
+  is '心水战绩';
+comment on column T_USER.STATUS
+  is '状态 1：正常  2:锁定';
+comment on column T_USER.IDCARD
+  is '身份证';
+comment on column T_USER.SEX
+  is '性别   1：男    2：女';
+comment on column T_USER.TEL
+  is '电话';
+comment on column T_USER.PROVINCE
+  is '省市自治区直辖市';
+comment on column T_USER.CITY
+  is '地级市';
+comment on column T_USER.REG_IP
+  is '注册IP';
+comment on column T_USER.LOGIN_CNT
+  is '登录次数';
+comment on column T_USER.QQ
+  is 'QQ';
+comment on column T_USER.TITLE
+  is '头衔';
+comment on column T_USER.REG_TIME
+  is '注册时间';
+comment on column T_USER.IS_EMAIL_BIND
+  is '邮箱是否绑定      ''1'' 绑定     ''0'' 尚未绑定';
+comment on column T_USER.BIRTHDAY
+  is '出生日期';
+comment on column T_USER.IS_ONLINE
+  is '用户是否在线   ‘1’ 在线     ''0'' 不在线';
+comment on column T_USER.IS_COMPLETE_INFO
+  is '用户资料是否完善 ‘1’ 完善 ‘0’ 不完善';
+comment on column T_USER.BET_MILITARY
+  is '投注战绩';
+comment on column T_USER.ATTENTION_CNT
+  is '关注人数';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_USER
+  add constraint PK_T_USER primary key (USERID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table T_USER
+  add constraint UNI_EMAIL unique (EMAIL);
+alter table T_USER
+  add constraint UNI_NAME unique (USERNAME)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Create/Recreate indexes 
+create unique index UNIQUE_EMAIL on T_USER (EMAIL)
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

@@ -1,0 +1,113 @@
+-- Create table
+create table T_TEAM
+(
+  ID             NUMBER(10) not null,
+  NAME           VARCHAR2(50) not null,
+  COUNTRY        VARCHAR2(30),
+  FOUND_DATE     DATE,
+  MAIN_SCENE     VARCHAR2(30),
+  BOSS           VARCHAR2(30),
+  CITY           VARCHAR2(100),
+  WEB_SITE       VARCHAR2(300),
+  CONTACT_ADDR   VARCHAR2(300),
+  STADIUM        VARCHAR2(300),
+  STADIUM_VOLUME NUMBER(20,2),
+  TYPE           CHAR(1),
+  EMAIL          VARCHAR2(100),
+  FULL_NAME      VARCHAR2(150),
+  INTRODUCTION   VARCHAR2(4000),
+  HONOR          VARCHAR2(4000),
+  SPECIALTY      VARCHAR2(2000),
+  WIN            NUMBER(10),
+  PING           NUMBER(10),
+  LOSING         NUMBER(10),
+  CHANGCI        NUMBER(10),
+  GOAL           NUMBER(10),
+  POINT          NUMBER(10),
+  COUNTRY_ID     NUMBER(10),
+  DISTRICT_ID    NUMBER(10),
+  IMG            VARCHAR2(100),
+  DISTRICT       VARCHAR2(50)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_TEAM
+  is '足球球队的基本信息：国家、城市、成立时间、主场、老板、网址';
+-- Add comments to the columns 
+comment on column T_TEAM.ID
+  is '主键';
+comment on column T_TEAM.NAME
+  is '球队名称';
+comment on column T_TEAM.COUNTRY
+  is '国家';
+comment on column T_TEAM.FOUND_DATE
+  is '成立时间';
+comment on column T_TEAM.MAIN_SCENE
+  is '主场';
+comment on column T_TEAM.BOSS
+  is '老板';
+comment on column T_TEAM.CITY
+  is '所在城市';
+comment on column T_TEAM.WEB_SITE
+  is '官方网站';
+comment on column T_TEAM.CONTACT_ADDR
+  is '联系地址';
+comment on column T_TEAM.STADIUM
+  is '球场';
+comment on column T_TEAM.STADIUM_VOLUME
+  is '球场容量';
+comment on column T_TEAM.TYPE
+  is '''1'':联赛队  ''2'':国家队  ''3'':其他队';
+comment on column T_TEAM.EMAIL
+  is '球队EMAIL';
+comment on column T_TEAM.FULL_NAME
+  is '球队全称';
+comment on column T_TEAM.INTRODUCTION
+  is '球队简介';
+comment on column T_TEAM.HONOR
+  is '球队荣誉';
+comment on column T_TEAM.SPECIALTY
+  is '球队之最';
+comment on column T_TEAM.WIN
+  is '胜';
+comment on column T_TEAM.PING
+  is '平';
+comment on column T_TEAM.LOSING
+  is '负';
+comment on column T_TEAM.CHANGCI
+  is '场次';
+comment on column T_TEAM.GOAL
+  is '进球';
+comment on column T_TEAM.POINT
+  is '积分';
+comment on column T_TEAM.COUNTRY_ID
+  is '国家主键  对应表T_DISTRICT';
+comment on column T_TEAM.DISTRICT_ID
+  is '区域ID(即  洲)';
+comment on column T_TEAM.IMG
+  is '队徽存储的地址';
+comment on column T_TEAM.DISTRICT
+  is '区域';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_TEAM
+  add constraint PK_T_TEAM primary key (ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

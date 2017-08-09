@@ -1,0 +1,60 @@
+-- Create table
+create table T_CS_HANDLE_LOG
+(
+  ID          NUMBER(20) not null,
+  CS_USER_ID  NUMBER(20) not null,
+  HANDLE_TIME DATE,
+  CS_NAME     VARCHAR2(50),
+  MEMO        VARCHAR2(300),
+  TYPE        VARCHAR2(3),
+  LOG_ID      NUMBER(20),
+  OP_TYPE     VARCHAR2(50),
+  IP          VARCHAR2(16)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CS_HANDLE_LOG
+  is '客服处理日志,万一出了什么事情 可以立即找到当事人';
+-- Add comments to the columns 
+comment on column T_CS_HANDLE_LOG.ID
+  is '主键';
+comment on column T_CS_HANDLE_LOG.CS_USER_ID
+  is '客服用户ID';
+comment on column T_CS_HANDLE_LOG.HANDLE_TIME
+  is '处理时间';
+comment on column T_CS_HANDLE_LOG.CS_NAME
+  is '客服姓名';
+comment on column T_CS_HANDLE_LOG.MEMO
+  is '客服处理结果';
+comment on column T_CS_HANDLE_LOG.TYPE
+  is '''1'':T_WITHDRAW_LOG        ''2'':T_VA_FROZEN_LOG  ''3'':T_LOTTERY_SCHEDULE';
+comment on column T_CS_HANDLE_LOG.LOG_ID
+  is '外键 关联日志表(T_WITHDRAW_LOG或T_VA_FROZEN_LOG,T_LOTTERY_SCHEDULE)';
+comment on column T_CS_HANDLE_LOG.OP_TYPE
+  is '''1'':受理取款 ''2'':转账 3:撤销转账   ''4'':添加期次';
+comment on column T_CS_HANDLE_LOG.IP
+  is '客服机器的IP';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CS_HANDLE_LOG
+  add constraint LOG_PK_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

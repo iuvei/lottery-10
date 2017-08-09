@@ -1,0 +1,48 @@
+-- Create table
+create table T_SECURITY_IP
+(
+  SECURITY_ID NUMBER(20) not null,
+  USER_ID     NUMBER(20),
+  IP          VARCHAR2(16) not null,
+  TX_TIME     DATE default sysdate,
+  CNT         NUMBER(20) not null
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_SECURITY_IP
+  is '用户注册 登录时记录 日志';
+-- Add comments to the columns 
+comment on column T_SECURITY_IP.SECURITY_ID
+  is '主键';
+comment on column T_SECURITY_IP.USER_ID
+  is '废弃';
+comment on column T_SECURITY_IP.IP
+  is 'IP';
+comment on column T_SECURITY_IP.TX_TIME
+  is '废弃';
+comment on column T_SECURITY_IP.CNT
+  is '注册次数';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_SECURITY_IP
+  add constraint SECURITY_PK_ID primary key (SECURITY_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

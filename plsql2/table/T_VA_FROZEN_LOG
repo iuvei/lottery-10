@@ -1,0 +1,72 @@
+-- Create table
+create table T_VA_FROZEN_LOG
+(
+  FROZEN_ID               NUMBER(20) not null,
+  TX_USER_ID              NUMBER(20) not null,
+  FROZEN_MONEY            NUMBER(10,2) default 0.00 not null,
+  FROZEN_DATE             DATE not null,
+  MEMO                    VARCHAR2(1000),
+  TX_TYPE                 VARCHAR2(3) not null,
+  ALL_MONEY               NUMBER(20,2) default 0.00,
+  MOSAIC_GOLDMONEY        NUMBER(20,2) default 0.00,
+  FROZEN_MOSAIC_GOLDMONEY NUMBER(20,2) default 0.00,
+  ORDER_ID                NUMBER(20) not null,
+  CATEGORY_TYPE           VARCHAR2(5),
+  ORDER_NO                VARCHAR2(50),
+  FLG                     CHAR(1)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_VA_FROZEN_LOG
+  is '冻结日志';
+-- Add comments to the columns 
+comment on column T_VA_FROZEN_LOG.FROZEN_ID
+  is '主键';
+comment on column T_VA_FROZEN_LOG.TX_USER_ID
+  is '交易人用户ID';
+comment on column T_VA_FROZEN_LOG.FROZEN_MONEY
+  is '冻结金额';
+comment on column T_VA_FROZEN_LOG.FROZEN_DATE
+  is '冻结日期';
+comment on column T_VA_FROZEN_LOG.MEMO
+  is '备注';
+comment on column T_VA_FROZEN_LOG.TX_TYPE
+  is '详细请见  T_DICTIONARY表TX_TYPE字段所对应的几条记录';
+comment on column T_VA_FROZEN_LOG.ALL_MONEY
+  is '剩余金额';
+comment on column T_VA_FROZEN_LOG.MOSAIC_GOLDMONEY
+  is '剩余彩金';
+comment on column T_VA_FROZEN_LOG.FROZEN_MOSAIC_GOLDMONEY
+  is '冻结彩金';
+comment on column T_VA_FROZEN_LOG.ORDER_ID
+  is '外键（关联投注表或者是心水购买表）';
+comment on column T_VA_FROZEN_LOG.CATEGORY_TYPE
+  is '购买彩票(1:足球单场,6:胜负彩,7:任九,8:6场半全场,9:4场进球) |购买b2c(10:) |购买c2c(11) 12:充值 13:取款   14:缴纳保证金15:心水保证金解冻';
+comment on column T_VA_FROZEN_LOG.ORDER_NO
+  is '订单号';
+comment on column T_VA_FROZEN_LOG.FLG
+  is '''1'':冻结   ''2'':解冻';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_VA_FROZEN_LOG
+  add constraint VAF_PK_ID primary key (FROZEN_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

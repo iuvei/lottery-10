@@ -1,0 +1,86 @@
+-- Create table
+create table T_EXPERT
+(
+  EXPERT_ID     NUMBER(20) not null,
+  USER_ID       NUMBER(20),
+  INTRODUCTION  CLOB,
+  JOB           VARCHAR2(100),
+  WIN_RATIO     NUMBER(4,2) default 0.00,
+  TYPE          CHAR(1) default '0',
+  CONTRACT_TIME DATE,
+  EXPERT_NAME   VARCHAR2(300),
+  MONTH_PACK    NUMBER(20,2) default 0,
+  WEEK_PACK     NUMBER(20,2) default 0,
+  STATUS        CHAR(1),
+  PHOTO         VARCHAR2(200),
+  EXPERT_CODE   VARCHAR2(50),
+  IS_VALUE_PACK CHAR(1) default '0',
+  SEASON_PACK   NUMBER(20,2),
+  YEAR_PACK     NUMBER(20,2),
+  SKILLED_RACE  VARCHAR2(200),
+  G_CLASS       CHAR(1)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_EXPERT
+  is 'B2签约专家补充资料   民间高手相关信息也放在这里';
+-- Add comments to the columns 
+comment on column T_EXPERT.EXPERT_ID
+  is '主键';
+comment on column T_EXPERT.USER_ID
+  is '关联T_USER表USERID';
+comment on column T_EXPERT.INTRODUCTION
+  is '专家介绍 ';
+comment on column T_EXPERT.JOB
+  is '职务';
+comment on column T_EXPERT.WIN_RATIO
+  is '胜率  注意这里是总的胜率  即从该用户成为天盛会员以来的胜率';
+comment on column T_EXPERT.TYPE
+  is '1 推荐   0普通专家';
+comment on column T_EXPERT.CONTRACT_TIME
+  is '签约时间';
+comment on column T_EXPERT.EXPERT_NAME
+  is '专家名称';
+comment on column T_EXPERT.MONTH_PACK
+  is '包月价格';
+comment on column T_EXPERT.WEEK_PACK
+  is '包周价格';
+comment on column T_EXPERT.STATUS
+  is '状态     ''1'':已公布  ''2''未公布';
+comment on column T_EXPERT.PHOTO
+  is '照片路径,   例如   /upload/b2c/photo/userId/**.gif,jpg';
+comment on column T_EXPERT.EXPERT_CODE
+  is '内参编号';
+comment on column T_EXPERT.IS_VALUE_PACK
+  is '是否为超值包   ''1'':投资超值包   ''0'':不是';
+comment on column T_EXPERT.SEASON_PACK
+  is '包季';
+comment on column T_EXPERT.YEAR_PACK
+  is '包年';
+comment on column T_EXPERT.SKILLED_RACE
+  is '擅长联赛';
+comment on column T_EXPERT.G_CLASS
+  is '专家分类';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_EXPERT
+  add constraint T_EXPERT_PK primary key (EXPERT_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

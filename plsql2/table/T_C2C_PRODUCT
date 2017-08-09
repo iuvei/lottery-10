@@ -1,0 +1,101 @@
+-- Create table
+create table T_C2C_PRODUCT
+(
+  C2C_ID          NUMBER(20) not null,
+  AGAINST_ID      NUMBER(20) not null,
+  TX_USER_ID      NUMBER(20) not null,
+  ENSURE_MONEY    NUMBER(10,2) default 0.00 not null,
+  HOST_NAME       VARCHAR2(90),
+  TYPE            CHAR(1) not null,
+  ZH_DESC         VARCHAR2(600) not null,
+  STATUS          CHAR(1),
+  XINSHUI_NO      VARCHAR2(50),
+  PRICE           NUMBER(10,2) default 0.00,
+  RACE_NAME       VARCHAR2(60),
+  RACE_ID         NUMBER(20),
+  PUB_TIME        DATE default sysdate,
+  ANSWER          CHAR(1),
+  TX_USERNAME     VARCHAR2(90),
+  GUEST_NAME      VARCHAR2(90),
+  SELECT_TYPE     VARCHAR2(2),
+  AINDEX          VARCHAR2(100),
+  BINDEX          VARCHAR2(100),
+  PAN_KOU_INDEX   VARCHAR2(100),
+  CONFIDENT_INDEX VARCHAR2(100),
+  IS_B2C          CHAR(1) default '0',
+  CLICK           NUMBER(20) default 0
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_C2C_PRODUCT
+  is 'C2C产品--民间高手发布的心水';
+-- Add comments to the columns 
+comment on column T_C2C_PRODUCT.C2C_ID
+  is 'C2C主键';
+comment on column T_C2C_PRODUCT.AGAINST_ID
+  is '竞猜赛程ID 关联到表T_XINSHUI_AGAINST';
+comment on column T_C2C_PRODUCT.TX_USER_ID
+  is '民间高手用户ID';
+comment on column T_C2C_PRODUCT.ENSURE_MONEY
+  is '保证金';
+comment on column T_C2C_PRODUCT.HOST_NAME
+  is '主队';
+comment on column T_C2C_PRODUCT.TYPE
+  is '''1'':亚盘   ''2'':大小盘  ''3'':欧赔';
+comment on column T_C2C_PRODUCT.ZH_DESC
+  is '心水说明';
+comment on column T_C2C_PRODUCT.STATUS
+  is '心水状态: ''1'':''发布中'',''2'':''赢'',''3'':''负'',''4'':''走'',''5'':''已关闭''';
+comment on column T_C2C_PRODUCT.XINSHUI_NO
+  is '心水编号(与订单号类似)';
+comment on column T_C2C_PRODUCT.PRICE
+  is '心水价格    只针对C2C  ,B2C是没有价格的';
+comment on column T_C2C_PRODUCT.RACE_NAME
+  is '赛事名称(包括  联赛 杯赛)';
+comment on column T_C2C_PRODUCT.RACE_ID
+  is '赛事类型';
+comment on column T_C2C_PRODUCT.PUB_TIME
+  is '发布时间';
+comment on column T_C2C_PRODUCT.ANSWER
+  is '本次是否猜对    ''1'':猜对     ''2'':猜错  后台会发布赛果的同时  更改此字段';
+comment on column T_C2C_PRODUCT.TX_USERNAME
+  is '民间高手用户名';
+comment on column T_C2C_PRODUCT.GUEST_NAME
+  is '客队名称';
+comment on column T_C2C_PRODUCT.SELECT_TYPE
+  is '选主 1：选主  2：选客 3：选大 4：选小     B2C    5:主胜  6:平局  7:主负';
+comment on column T_C2C_PRODUCT.AINDEX
+  is '主队或者大球指数';
+comment on column T_C2C_PRODUCT.BINDEX
+  is '客队或者小球指数';
+comment on column T_C2C_PRODUCT.PAN_KOU_INDEX
+  is '盘口';
+comment on column T_C2C_PRODUCT.CONFIDENT_INDEX
+  is '信心指数';
+comment on column T_C2C_PRODUCT.IS_B2C
+  is '是否为B2C  默认为c2c   ‘1’ ：c2c';
+comment on column T_C2C_PRODUCT.CLICK
+  is '点击数';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_C2C_PRODUCT
+  add constraint C2C_PRODUCT_PK_ID primary key (C2C_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

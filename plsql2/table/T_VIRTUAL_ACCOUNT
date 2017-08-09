@@ -1,0 +1,80 @@
+-- Create table
+create table T_VIRTUAL_ACCOUNT
+(
+  VA_ID              NUMBER(20) not null,
+  TX_USER_ID         NUMBER(20),
+  STATUS             CHAR(1) default '1',
+  ALL_MONEY          NUMBER(20,2) default 0.00,
+  FROZEN_MONEY       NUMBER(20,2) default 0.00,
+  MOSAIC_GOLD        NUMBER(10,2) default 0.00,
+  POINT              NUMBER(20),
+  BANK_CODE          VARCHAR2(10),
+  CARD_NUM           VARCHAR2(50),
+  PROVINCE           VARCHAR2(20),
+  CITY               VARCHAR2(120),
+  FROZEN_MOSAIC_GOLD NUMBER(10,2) default 0.00,
+  BRANCH             VARCHAR2(120),
+  BANK_NAME          VARCHAR2(120),
+  USER_NAME          VARCHAR2(50),
+  NAME               VARCHAR2(60)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_VIRTUAL_ACCOUNT
+  is '用户的金额虚拟账号 ';
+-- Add comments to the columns 
+comment on column T_VIRTUAL_ACCOUNT.VA_ID
+  is '主键';
+comment on column T_VIRTUAL_ACCOUNT.TX_USER_ID
+  is '用户ID';
+comment on column T_VIRTUAL_ACCOUNT.STATUS
+  is '状态   1:正常      2  锁定';
+comment on column T_VIRTUAL_ACCOUNT.ALL_MONEY
+  is '总余额(包括冻结金额)';
+comment on column T_VIRTUAL_ACCOUNT.FROZEN_MONEY
+  is '冻结金额';
+comment on column T_VIRTUAL_ACCOUNT.MOSAIC_GOLD
+  is '彩金(包括已经冻结的彩金)';
+comment on column T_VIRTUAL_ACCOUNT.POINT
+  is '积分';
+comment on column T_VIRTUAL_ACCOUNT.BANK_CODE
+  is '银行代码   具体在T_DICTIONARY表';
+comment on column T_VIRTUAL_ACCOUNT.CARD_NUM
+  is '银行账户';
+comment on column T_VIRTUAL_ACCOUNT.PROVINCE
+  is '银行所在省份';
+comment on column T_VIRTUAL_ACCOUNT.CITY
+  is '银行所在地级市';
+comment on column T_VIRTUAL_ACCOUNT.FROZEN_MOSAIC_GOLD
+  is '冻结彩金';
+comment on column T_VIRTUAL_ACCOUNT.BRANCH
+  is '支行';
+comment on column T_VIRTUAL_ACCOUNT.BANK_NAME
+  is '银行名称';
+comment on column T_VIRTUAL_ACCOUNT.USER_NAME
+  is '用户名';
+comment on column T_VIRTUAL_ACCOUNT.NAME
+  is '真实姓名';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_VIRTUAL_ACCOUNT
+  add constraint PK_T_VIRTUAL_ACCOUNT primary key (VA_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

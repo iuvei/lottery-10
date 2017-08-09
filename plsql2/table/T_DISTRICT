@@ -1,0 +1,42 @@
+-- Create table
+create table T_DISTRICT
+(
+  ID        NUMBER(6) not null,
+  NAME      VARCHAR2(60),
+  PARENT_ID NUMBER(6)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_DISTRICT
+  is '区域表(含 区域 国家)';
+-- Add comments to the columns 
+comment on column T_DISTRICT.ID
+  is '主键';
+comment on column T_DISTRICT.NAME
+  is '名称';
+comment on column T_DISTRICT.PARENT_ID
+  is '父节点,如果是区域 则为空';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_DISTRICT
+  add constraint DISTRICT_PK_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

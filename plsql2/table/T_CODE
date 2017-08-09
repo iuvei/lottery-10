@@ -1,0 +1,47 @@
+-- Create table
+create table T_CODE
+(
+  NAME      VARCHAR2(120),
+  ROOT      CHAR(1),
+  ZONE      NUMBER(5),
+  ID        NUMBER(20) not null,
+  PARENT_ID NUMBER(20),
+  TYPE      CHAR(1)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CODE
+  is '省市数据表';
+-- Add comments to the columns 
+comment on column T_CODE.NAME
+  is '中文名称';
+comment on column T_CODE.ID
+  is '主键';
+comment on column T_CODE.PARENT_ID
+  is '父节点ID';
+comment on column T_CODE.TYPE
+  is '类型''1'':洲 ''2'':国家  ''3'':省市';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CODE
+  add constraint AREA_PK_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

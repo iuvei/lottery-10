@@ -1,0 +1,71 @@
+-- Create table
+create table T_CHARGE_LOG
+(
+  CHARGE_ID      NUMBER(20) not null,
+  FROM_BANK      VARCHAR2(50) not null,
+  MONEY          NUMBER(20,2) not null,
+  USER_ID        NUMBER(20) not null,
+  CHARGE_TIME    DATE not null,
+  MEMO           VARCHAR2(1000),
+  IP             VARCHAR2(16),
+  ORDER_NO       VARCHAR2(50),
+  STATUS         CHAR(1),
+  FROM_BANK_CODE VARCHAR2(50),
+  ALL_MONEY      NUMBER(20,2),
+  PAY_WAY        VARCHAR2(50),
+  CATEGORY_TYPE  VARCHAR2(10) default '12'
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CHARGE_LOG
+  is '充值日志 ';
+-- Add comments to the columns 
+comment on column T_CHARGE_LOG.CHARGE_ID
+  is '主键';
+comment on column T_CHARGE_LOG.FROM_BANK
+  is '银行或第三方系统中文名称';
+comment on column T_CHARGE_LOG.MONEY
+  is '金额';
+comment on column T_CHARGE_LOG.USER_ID
+  is '用户ID';
+comment on column T_CHARGE_LOG.CHARGE_TIME
+  is '日期';
+comment on column T_CHARGE_LOG.MEMO
+  is '备注';
+comment on column T_CHARGE_LOG.IP
+  is '充值IP';
+comment on column T_CHARGE_LOG.ORDER_NO
+  is '订单号';
+comment on column T_CHARGE_LOG.STATUS
+  is '充值状态';
+comment on column T_CHARGE_LOG.FROM_BANK_CODE
+  is '银行代码';
+comment on column T_CHARGE_LOG.ALL_MONEY
+  is '账户余额';
+comment on column T_CHARGE_LOG.PAY_WAY
+  is '充值方式:  ''1'':支付宝  ''2'':网银充值 ''3'':银行转账 ''4'':手机充值   ''5'':财付通  ''6'':快钱  ''7'':其他';
+comment on column T_CHARGE_LOG.CATEGORY_TYPE
+  is '12:充值';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CHARGE_LOG
+  add constraint CHARGE_LOG_PK_ID primary key (CHARGE_ID)
+  using index 
+  tablespace USERS
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

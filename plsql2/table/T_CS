@@ -1,0 +1,120 @@
+-- Create table
+create table T_CS
+(
+  USER_ID            NUMBER(6) not null,
+  LOGIN_NAME         VARCHAR2(50) not null,
+  REAL_NAME          VARCHAR2(50),
+  PASSWORD           CHAR(32),
+  EMAIL              VARCHAR2(100) not null,
+  FAX                VARCHAR2(255),
+  TEL                VARCHAR2(255),
+  MOBILE             VARCHAR2(255),
+  ZIP                VARCHAR2(20),
+  ADDRESS            VARCHAR2(255),
+  GENDER             INTEGER,
+  BIRTHDAY           DATE,
+  CREATE_TIME        DATE,
+  LAST_LOGIN_TIME    DATE,
+  LAST_LOGIN_IP      VARCHAR2(50),
+  CURRENT_LOGIN_TIME DATE,
+  CURRENT_LOGIN_IP   VARCHAR2(50),
+  LOGIN_COUNT        INTEGER default 0,
+  IS_DISABLED        INTEGER default 0 not null,
+  DEPT_CODE          VARCHAR2(100),
+  DEPT_NAME          VARCHAR2(100)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_CS
+  is '客服人员表(包括彩票网站   JEECMS) 此表用作后台单点登录使用';
+-- Add comments to the columns 
+comment on column T_CS.LOGIN_NAME
+  is '登录名';
+comment on column T_CS.REAL_NAME
+  is '真实姓名';
+comment on column T_CS.PASSWORD
+  is '密码';
+comment on column T_CS.EMAIL
+  is '电子邮箱';
+comment on column T_CS.FAX
+  is '传真';
+comment on column T_CS.TEL
+  is '电话';
+comment on column T_CS.MOBILE
+  is '手机';
+comment on column T_CS.ZIP
+  is '邮编';
+comment on column T_CS.ADDRESS
+  is '联系地址';
+comment on column T_CS.GENDER
+  is '性别';
+comment on column T_CS.BIRTHDAY
+  is '出生年月';
+comment on column T_CS.CREATE_TIME
+  is '创建时间';
+comment on column T_CS.LAST_LOGIN_TIME
+  is '最后登录时间';
+comment on column T_CS.LAST_LOGIN_IP
+  is '最后登录IP';
+comment on column T_CS.CURRENT_LOGIN_TIME
+  is '当前登录时间';
+comment on column T_CS.CURRENT_LOGIN_IP
+  is '当前登录IP';
+comment on column T_CS.LOGIN_COUNT
+  is '总共登录次数';
+comment on column T_CS.IS_DISABLED
+  is '是否禁用';
+comment on column T_CS.DEPT_CODE
+  is '部门代码';
+comment on column T_CS.DEPT_NAME
+  is '部门中文名称';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_CS
+  add constraint PK_CORE_USER primary key (USER_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table T_CS
+  add constraint AK_EMAIL_CORE_USE unique (EMAIL)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+alter table T_CS
+  add constraint AK_LOGIN_NAME_CORE_USE unique (LOGIN_NAME)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

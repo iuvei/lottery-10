@@ -1,0 +1,51 @@
+-- Create table
+create table T_MY_ATTENTION
+(
+  ATTENTION_ID    NUMBER(20) not null,
+  ATTENTION_TIME  DATE default sysdate,
+  USER_ID         NUMBER(20),
+  TARGET_USERID   NUMBER(20),
+  USERNAME        VARCHAR2(180),
+  TARGET_USERNAME VARCHAR2(180)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_MY_ATTENTION
+  is '我的关注表';
+-- Add comments to the columns 
+comment on column T_MY_ATTENTION.ATTENTION_ID
+  is '主键';
+comment on column T_MY_ATTENTION.ATTENTION_TIME
+  is '关注时间';
+comment on column T_MY_ATTENTION.USER_ID
+  is '用户ID(主动)';
+comment on column T_MY_ATTENTION.TARGET_USERID
+  is '被关注的用户ID(被动)';
+comment on column T_MY_ATTENTION.USERNAME
+  is '用户名(主动)';
+comment on column T_MY_ATTENTION.TARGET_USERNAME
+  is '被关注的用户名';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_MY_ATTENTION
+  add constraint MY_ATTENTION_PK primary key (ATTENTION_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

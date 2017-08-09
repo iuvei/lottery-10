@@ -1,0 +1,52 @@
+-- Create table
+create table T_RACE
+(
+  ID          NUMBER(20),
+  NAME        VARCHAR2(100),
+  PARENT_ID   NUMBER(20),
+  TYPE        VARCHAR2(2),
+  PREFIX      CHAR(1),
+  SCHEDULE_ID NUMBER(20),
+  COUNTRY_ID  NUMBER(20),
+  DISTRICT_ID NUMBER(20),
+  COUNTRY     VARCHAR2(60),
+  DISTRICT    VARCHAR2(30),
+  BG_COLOR    VARCHAR2(50)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_RACE
+  is '联赛或杯赛球队表';
+-- Add comments to the columns 
+comment on column T_RACE.ID
+  is '主键';
+comment on column T_RACE.NAME
+  is '赛季名称或轮次(联赛与杯赛等)';
+comment on column T_RACE.PARENT_ID
+  is '父节点';
+comment on column T_RACE.TYPE
+  is '类型 ''1'':联赛   ''2'':''杯赛''  3:''其他''';
+comment on column T_RACE.PREFIX
+  is '前缀     ''A'' ,''B''等等';
+comment on column T_RACE.SCHEDULE_ID
+  is '该字段废弃  (关联对阵表主键(T_AGAINST))';
+comment on column T_RACE.COUNTRY_ID
+  is '关联国家ID';
+comment on column T_RACE.DISTRICT_ID
+  is '关联区域ID';
+comment on column T_RACE.COUNTRY
+  is '关联国家名称';
+comment on column T_RACE.DISTRICT
+  is '关联区域名称';
+comment on column T_RACE.BG_COLOR
+  is '颜色';

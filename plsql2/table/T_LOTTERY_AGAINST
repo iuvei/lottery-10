@@ -1,0 +1,48 @@
+-- Create table
+create table T_LOTTERY_AGAINST
+(
+  ID         NUMBER(20) not null,
+  AGAINST_ID NUMBER(20),
+  PHASE_ID   NUMBER(20),
+  RESULT_NO  CHAR(1),
+  CHANGCI    NUMBER(10)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_LOTTERY_AGAINST
+  is '期次对阵中间表';
+-- Add comments to the columns 
+comment on column T_LOTTERY_AGAINST.ID
+  is '主键';
+comment on column T_LOTTERY_AGAINST.AGAINST_ID
+  is '关联对阵表   关联T_AGAINST.ID';
+comment on column T_LOTTERY_AGAINST.PHASE_ID
+  is '期次ID             关联T_LOTTERY_PHASE';
+comment on column T_LOTTERY_AGAINST.RESULT_NO
+  is '开奖号码    只能是:    3 ,1 ,0';
+comment on column T_LOTTERY_AGAINST.CHANGCI
+  is '场次    由体彩中心提供';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_LOTTERY_AGAINST
+  add constraint LA_PK_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

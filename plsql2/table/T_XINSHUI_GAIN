@@ -1,0 +1,54 @@
+-- Create table
+create table T_XINSHUI_GAIN
+(
+  ID           NUMBER(20) not null,
+  C2C_ID       NUMBER(20),
+  ENSURE_MONEY NUMBER(20,2),
+  GAIN         NUMBER(20,2),
+  PERCENTAGE   NUMBER(20,2),
+  TX_USER_ID   NUMBER(20),
+  TX_USER_NAME VARCHAR2(100)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_XINSHUI_GAIN
+  is '天彩网心水利润表';
+-- Add comments to the columns 
+comment on column T_XINSHUI_GAIN.ID
+  is '主键';
+comment on column T_XINSHUI_GAIN.C2C_ID
+  is '心水ID';
+comment on column T_XINSHUI_GAIN.ENSURE_MONEY
+  is '保证金';
+comment on column T_XINSHUI_GAIN.GAIN
+  is '利润';
+comment on column T_XINSHUI_GAIN.PERCENTAGE
+  is '收费百分率';
+comment on column T_XINSHUI_GAIN.TX_USER_ID
+  is '民间高手用户ID';
+comment on column T_XINSHUI_GAIN.TX_USER_NAME
+  is '民间高手用户名';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_XINSHUI_GAIN
+  add constraint XINSHUI_GAIN_ID primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

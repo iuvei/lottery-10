@@ -1,0 +1,69 @@
+-- Create table
+create table T_KING_SPONSOR
+(
+  ID             NUMBER(20) not null,
+  USERNAME       VARCHAR2(100),
+  BET_CATEGOTY   VARCHAR2(100),
+  TYPE           CHAR(1),
+  ZH_DESC        VARCHAR2(300),
+  USERID         NUMBER(20),
+  STATUS         CHAR(1),
+  GD_STATUS      CHAR(1),
+  BET_MILITARY   NUMBER(10),
+  DZ_CNT         NUMBER(20) default 300,
+  ALREADY_DZ_CNT NUMBER(20) default 0,
+  PLAN_DESC      VARCHAR2(1000)
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the table 
+comment on table T_KING_SPONSOR
+  is '金牌发起人申请';
+-- Add comments to the columns 
+comment on column T_KING_SPONSOR.ID
+  is '主键';
+comment on column T_KING_SPONSOR.USERNAME
+  is '金牌发起人用户名';
+comment on column T_KING_SPONSOR.BET_CATEGOTY
+  is '彩种    1: 胜负14场      2:任9场  3:4场进球  4:4半全场  5:6 场半全场     61:单场半全场  62:单场比分 63:单场胜平负  64:单场上下单双 65:单场总进球';
+comment on column T_KING_SPONSOR.TYPE
+  is '废弃';
+comment on column T_KING_SPONSOR.ZH_DESC
+  is '中文描述,给跟单人看';
+comment on column T_KING_SPONSOR.USERID
+  is 'j金牌发起人 用户ID';
+comment on column T_KING_SPONSOR.STATUS
+  is '状态    ''1'':审核通过,状态正常  ''2'':审核未通过';
+comment on column T_KING_SPONSOR.GD_STATUS
+  is '定制自动跟单状态    ''1'':未满额   ''2'':已满额';
+comment on column T_KING_SPONSOR.BET_MILITARY
+  is '投注战绩';
+comment on column T_KING_SPONSOR.DZ_CNT
+  is '最大定制人数,此值从字典表里获取';
+comment on column T_KING_SPONSOR.ALREADY_DZ_CNT
+  is '已经定制的人数';
+comment on column T_KING_SPONSOR.PLAN_DESC
+  is '金牌发起人描述';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_KING_SPONSOR
+  add constraint SUPER_SPONSOR_PK primary key (ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

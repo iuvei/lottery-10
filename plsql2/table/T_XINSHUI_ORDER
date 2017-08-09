@@ -1,0 +1,74 @@
+-- Create table
+create table T_XINSHUI_ORDER
+(
+  XINSHUI_ORDER_ID NUMBER(20) not null,
+  TYPE             NUMBER(2) default '1',
+  PRODUCT_ID       NUMBER(20),
+  BUY_USER_ID      NUMBER(20),
+  START_TIME       DATE,
+  END_TIME         DATE default to_date('1971-01-01','yyyy-mm-dd'),
+  STATUS           CHAR(1),
+  PHASE            VARCHAR2(10),
+  BUY_TIME         DATE,
+  PAY_STATUS       CHAR(1),
+  ORDER_NO         VARCHAR2(50),
+  SOLD_USER_ID     NUMBER(20),
+  SOLD_USERNAME    VARCHAR2(50),
+  BUY_USERNAME     VARCHAR2(50),
+  TX_MONEY         NUMBER(10,2) default 0.00,
+  TX_CAIJIN        NUMBER(10,2) default 0.00,
+  PRICE            NUMBER(20,2) default 0.00,
+  ORDER_TYPE       CHAR(1) default '3'
+)
+tablespace LOTTERY
+  pctfree 10
+  pctused 40
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column T_XINSHUI_ORDER.TYPE
+  is '''1'' =C2C  ,''2''=B2C';
+comment on column T_XINSHUI_ORDER.PRODUCT_ID
+  is '如果TYPE=''1'' 关联T_C2C_PRODUCT.C2C_ID  如果 TYPE=''2'' 关联T_EXPERT.T_EXPERT_ID';
+comment on column T_XINSHUI_ORDER.BUY_USER_ID
+  is '购买人用户ID   关联T_USER表 ';
+comment on column T_XINSHUI_ORDER.START_TIME
+  is '生效起始时间(只对b2c有效)';
+comment on column T_XINSHUI_ORDER.END_TIME
+  is '生效结束时间(只对b2c有效)';
+comment on column T_XINSHUI_ORDER.STATUS
+  is '状态  1正在进行中   2 正常完成 3流单';
+comment on column T_XINSHUI_ORDER.PAY_STATUS
+  is '支付状态 支付状态:，1:“未支付”、2:“已支付”、3:“已扣款”、4:“已赔付”   5:“ 已取消”';
+comment on column T_XINSHUI_ORDER.SOLD_USER_ID
+  is '民间高手或者是特约专家';
+comment on column T_XINSHUI_ORDER.BUY_USERNAME
+  is '购买人用户名';
+comment on column T_XINSHUI_ORDER.TX_MONEY
+  is '已经冻结的金额 或者是已经扣款的金额';
+comment on column T_XINSHUI_ORDER.TX_CAIJIN
+  is '已经冻结的彩金 或者是已经扣款的彩金';
+comment on column T_XINSHUI_ORDER.PRICE
+  is '价格,';
+comment on column T_XINSHUI_ORDER.ORDER_TYPE
+  is '订购类型  ''1'':包年  ''2'':包季 ''3'':包月 ''4'':包周  默认包月';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table T_XINSHUI_ORDER
+  add constraint XINSHUI_ORDER_PK_ID primary key (XINSHUI_ORDER_ID)
+  using index 
+  tablespace LOTTERY
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
