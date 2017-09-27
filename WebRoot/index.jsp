@@ -829,7 +829,8 @@ function showTab(total, tabid, id)
         <!--end 进球彩-->
         </div>
     </div>
-    
+
+
     <div class="clear"></div>
     <div class="guide">
     	<div>
@@ -901,6 +902,8 @@ function showTab(total, tabid, id)
     </ul><div class="clear"></div>
     </div>
 </div>
+
+
 <!--End Body-->
 <%@ include file="/common/footer.jsp"%>
 </body>
